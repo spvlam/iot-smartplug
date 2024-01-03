@@ -119,7 +119,7 @@ String webPage = R"(<!DOCTYPE html>
 void callBack(char *topic, byte *payload, unsigned int length);
 void toR1(byte *payload);
 void toR2(byte *payload);
-void setupWifi();
+void setupAP();
 void setupMQTT();
 void reconnect();
 void timeSetRemote(TimeSetPayload payload);
@@ -139,7 +139,6 @@ void handleConnect()
 
   ssid = ssidParam.c_str();
   pass = passParam.c_str();
-
   server.send(200, "text/plain", "Credentials updated!");
 }
 void setup()
@@ -150,21 +149,28 @@ void setup()
   digitalWrite(r1, HIGH);
   pinMode(r2, OUTPUT);
   digitalWrite(r2, HIGH);
-  setupWifi();
   setupMQTT();
 }
 
 void loop()
 {
-  server.handleClient();
-  // put your main code here, to run repeatedly:
-  if (!mqtt_client.connected())
+  if (WiFi.status() != WL_CONNECTED)
   {
-    reconnect();
+    setupAP();
+    server.handleClient();
+    connectWifi();
   }
-  mqtt_client.loop();
-  // unsigned long now = millis();
-  mqtt_client.subscribe("to_r1");
+  else
+  {
+    if (!mqtt_client.connected())
+    {
+      reconnect();
+    }
+    mqtt_client.loop();
+    // unsigned long now = millis();
+    mqtt_client.subscribe("to_r1");
+  }
+  // put your main code here, to run repeatedly:
 }
 
 // put function definitions here:
@@ -189,40 +195,53 @@ void callBack(char *topic, byte *payload, unsigned int length)
   }
 }
 
-void setupWifi()
+void setupAP()
 {
+  WiFi.softAPdisconnect();
+  WiFi.disconnect();
+  delay(3000);
+  WiFi.mode(WIFI_AP);
   while (WiFi.softAP("ESP8266 WiFI", "12345678") == false)
   {
     Serial.print(".");
     delay(300);
   }
   IPAddress myIP = WiFi.softAPIP();
-  server.on("/", handleRoot);
-  server.on("/connect", handleConnect);
+  Serial.println(myIp);
+  server.on("/", HTTP_GET, handleRoot);
+  server.on("/connect", HTTP_POST, handleConnect);
   server.begin();
 }
-void connectWifi()
+int connectWifi()
 {
+  WiFi.softAPdisconnect();
+  WiFi.disconnect();
   delay(10);
   // We start by connecting to a WiFi network
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
-
+  int c = 0;
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, pass);
-  while (WiFi.status() != WL_CONNECTED)
+  while (c < 20)
   {
+    if (WiFi.status() == WL_CONNECTED)
+    {
+      randomSeed(micros());
+      Serial.println("");
+      Serial.println("WiFi connected");
+      Serial.println("IP address: ");
+      Serial.println(WiFi.localIP());
+      return WL_CONNECTED;
+    }
     delay(500);
     Serial.print(".");
+    c++;
   }
-
-  randomSeed(micros());
-
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
+  Serial.println();
+  Serial.println("Connect timed out!");
+  return WL_CONNECT_FAILED;
 }
 void setupMQTT()
 {
