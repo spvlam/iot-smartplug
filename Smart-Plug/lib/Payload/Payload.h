@@ -46,12 +46,13 @@ public:
     TimeSetPayload(String device, float time, int type, int data);
     String getDeviceName() const;
     void setDeviceName(const String &device);
+    int getData() const;
     float getTime() const;
     void setTime(float time);
     int getType() const;
     void setType(int type);
     String toJson() const;
     static TimeSetPayload fromJson(const String &jsonString);
-}
+};
 
 #endif

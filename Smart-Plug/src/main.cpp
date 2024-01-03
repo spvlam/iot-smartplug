@@ -8,6 +8,7 @@
 #include <string>
 #include <cctype> // for toupper
 #include <ArduinoJson.h>
+#include <ESP8266WebServer.h>
 
 #define ONE_SECOND 1000
 #define ONE_MINUTE 60 * ONE_SECOND
@@ -18,8 +19,8 @@ PubSubClient mqtt_client(client);
 ESP8266WebServer server(80);
 const int r1 = D1;
 const int r2 = D2;
-const char ssid[] = "";
-const char pass[] = "";
+char ssid[64];
+char pass[64];
 const char mqtt_sever[] = "192.168.50.72";
 const int port = 1883;
 const char *clientId = "smart_plug_1";
@@ -84,17 +85,6 @@ String webPage = R"(<!DOCTYPE html>
       background-color: #0056b3;
     }
   </style>
-  <script>
-    function submitForm() {
-      var wifiName = document.getElementById("wifiName").value;
-      var wifiPassword = document.getElementById("wifiPassword").value;
-
-      // Send an HTTP request to the server with the entered values
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", "/connect?ssid=" + wifiName + "&pass=" + wifiPassword, true);
-      xhr.send();
-    }
-  </script>
 </head>
 <body>
   <div class="container">
@@ -108,7 +98,7 @@ String webPage = R"(<!DOCTYPE html>
         <label for="wifiPassword">Password:</label>
         <input type="password" id="wifiPassword" name="wifiPassword" required>
       </div>
-      <input type="button" value="Connect" onclick="submitForm() ">
+      <input type="submit" value="Connect">
     </form>
   </div>
 </body>
@@ -126,7 +116,7 @@ void timeSetRemote(TimeSetPayload payload);
 void countDown(int type, float time);
 void remote(RemotePayload payload);
 void handle(char *topic, byte *payload);
-
+int connectWifi();
 void handleRoot()
 {
   server.send(200, "text/html", webPage);
@@ -137,8 +127,9 @@ void handleConnect()
   String ssidParam = server.arg("ssid");
   String passParam = server.arg("pass");
 
-  ssid = ssidParam.c_str();
-  pass = passParam.c_str();
+  ssidParam.toCharArray(ssid, sizeof(ssid));
+  passParam.toCharArray(pass, sizeof(pass));
+
   server.send(200, "text/plain", "Credentials updated!");
 }
 void setup()
@@ -150,15 +141,18 @@ void setup()
   pinMode(r2, OUTPUT);
   digitalWrite(r2, HIGH);
   setupMQTT();
+  setupAP();
 }
 
 void loop()
 {
   if (WiFi.status() != WL_CONNECTED)
   {
-    setupAP();
     server.handleClient();
-    connectWifi();
+     if (strcmp(ssid, "") != 0)
+    {
+      connectWifi();
+    }
   }
   else
   {
@@ -201,15 +195,15 @@ void setupAP()
   WiFi.disconnect();
   delay(3000);
   WiFi.mode(WIFI_AP);
-  while (WiFi.softAP("ESP8266 WiFI", "12345678") == false)
+  while (WiFi.softAP("ESP8266 WiFi", "12345678") == false)
   {
     Serial.print(".");
     delay(300);
   }
   IPAddress myIP = WiFi.softAPIP();
-  Serial.println(myIp);
+  Serial.println(myIP);
   server.on("/", HTTP_GET, handleRoot);
-  server.on("/connect", HTTP_POST, handleConnect);
+  server.on("/connect", HTTP_GET, handleConnect);
   server.begin();
 }
 int connectWifi()
@@ -350,14 +344,15 @@ void timeSetRemote(TimeSetPayload payload)
 
 void countDown(int type, float time)
 {
+  long tmp;
   switch (type)
   {
   case 1:
-    long tmp = time * ONE_MINUTE;
+    tmp = (long)(time * ONE_MINUTE);
     delay(tmp);
     break;
   case 2:
-    long tmp = time * ONE_HOUR;
+    tmp = (long)(time * ONE_HOUR);
     delay(tmp);
   default:
     delay(time * ONE_SECOND);

@@ -77,7 +77,10 @@ String TimeSetPayload::getDeviceName() const
 {
     return device_;
 }
-
+int TimeSetPayload::getData() const
+{
+    return data_;
+}
 void TimeSetPayload::setDeviceName(const String &device)
 {
     device_ = device;
