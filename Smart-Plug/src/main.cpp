@@ -175,7 +175,7 @@ void loop()
     }
     mqtt_client.loop();
     // unsigned long now = millis();
-    mqtt_client.subscribe("to_r1");
+    mqtt_client.subscribe("user_name/equ_id/to_r1");
   }
   // put your main code here, to run repeatedly:
 }
@@ -256,7 +256,7 @@ void setupMQTT()
   mqtt_client.setCallback(callBack);
   mqtt_client.subscribe("to_r1");
   mqtt_client.subscribe("to_r2");
-  mqtt_client.publish("from-esp8266", "Hello Server");
+  mqtt_client.publish("eqId", "userName");
 }
 
 void reconnect()
