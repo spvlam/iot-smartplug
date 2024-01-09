@@ -10,7 +10,6 @@ public:
     static Payload fromJson(const String &jsonString);
     String getAction() const;
     // Member function
-    
 
 private:
     String _action;
@@ -21,6 +20,7 @@ class RemotePayload
 private:
     String device_;
     int data_;
+
 public:
     RemotePayload();
     RemotePayload(String dev, int dat);
@@ -32,28 +32,6 @@ public:
     void setData(int data);
     String toJson() const;
     static RemotePayload fromJson(const String &jsonString);
+    static std::vector<RemotePayload> fromListJson(const String &jsonString);
 };
-
-class TimeSetPayload
-{
-private:
-    String device_;
-    float time_;
-    int type_;
-    int data_;
-
-public:
-    TimeSetPayload();
-    TimeSetPayload(String device, float time, int type, int data);
-    String getDeviceName() const;
-    void setDeviceName(const String &device);
-    int getData() const;
-    float getTime() const;
-    void setTime(float time);
-    int getType() const;
-    void setType(int type);
-    String toJson() const;
-    static TimeSetPayload fromJson(const String &jsonString);
-};
-
 #endif

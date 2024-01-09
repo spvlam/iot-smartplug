@@ -30,13 +30,6 @@ String socket2 = "Socket_2";
 const char *equipmentId = "82876453-ae65-11ee-935a-bce92f7b38bc";
 String firstPayload = "";
 bool isFirstMSG = true;
-enum Topic
-{
-  ON = 0,
-  OFF = 1,
-  TO_R1,
-  TO_R2,
-};
 String webPage = R"(
   <!DOCTYPE html>
 <html lang="en">
@@ -224,21 +217,6 @@ void setup()
   pinMode(r2, OUTPUT);
   digitalWrite(r2, HIGH);
   setupAP();
-  // Serial.println();
-  // Serial.print("Connecting to ");
-  // Serial.println(ssid);
-  // WiFi.mode(WIFI_STA);
-  // WiFi.begin(ssid, pass);
-
-  // while (WiFi.status() != WL_CONNECTED)
-  // {
-  //   delay(500);
-  //   Serial.print(".");
-  // }
-  // Serial.println("");
-  // Serial.println("WiFi connected");
-  // Serial.println("IP address: ");
-  // Serial.println(WiFi.localIP());
   setupMQTT();
 }
 
@@ -392,42 +370,6 @@ void reconnect()
   }
 }
 
-void toR1(byte *payload)
-{
-  int tmp = static_cast<int>((char)payload[0]) - '0';
-  switch (tmp)
-  {
-  case ON:
-    Serial.println("R1 On");
-    digitalWrite(r1, HIGH);
-    break;
-  case OFF:
-    Serial.println("R1 Off");
-    digitalWrite(r1, LOW);
-    break;
-  default:
-    printf("Unknow code\n");
-    break;
-  }
-}
-
-void toR2(byte *payload)
-{
-  int tmp = static_cast<int>((char)payload[0]) - '0';
-  switch (tmp)
-  {
-  case ON:
-    digitalWrite(r1, HIGH);
-    break;
-  case OFF:
-    digitalWrite(r1, LOW);
-    break;
-  default:
-    printf("Unknow code\n");
-    break;
-  }
-}
-
 void remote(RemotePayload payload)
 {
   if (payload.getDeviceName() == socket1)
@@ -454,39 +396,11 @@ void handle(byte *payload)
   }
   else if (action.getAction() == "SET_TIME")
   {
-    TimeSetPayload TimeSetPayload = TimeSetPayload::fromJson(payloadStr);
-    timeSetRemote(TimeSetPayload);
-  }
-}
-
-void timeSetRemote(TimeSetPayload payload)
-{
-  countDown(payload.getType(), payload.getTime());
-  if (payload.getDeviceName() == socket1)
-  {
-    digitalWrite(r1, payload.getData());
-  }
-  else
-  {
-    digitalWrite(r2, payload.getData());
-  }
-}
-
-void countDown(int type, float time)
-{
-  long tmp;
-  switch (type)
-  {
-  case 1:
-    tmp = (long)(time * ONE_MINUTE);
-    delay(tmp);
-    break;
-  case 2:
-    tmp = (long)(time * ONE_HOUR);
-    delay(tmp);
-  default:
-    delay(time * ONE_SECOND);
-    break;
+    std::vector<RemotePayload> listRemote = RemotePayload::fromListJson(payloadStr);
+    for (unsigned int i = 0; i < listRemote.size(); i++)
+    {
+      remote(listRemote[i]);
+    }
   }
 }
 
