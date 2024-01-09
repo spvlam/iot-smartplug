@@ -6,13 +6,14 @@ class Payload
 {
 public:
     // Constructor
-    Payload(int data);
-
+    Payload(String action);
+    static Payload fromJson(const String &jsonString);
+    String getAction() const;
     // Member function
-    void displayData();
+    
 
 private:
-    int data_;
+    String _action;
 };
 
 class RemotePayload
