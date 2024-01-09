@@ -761,5 +761,43 @@
                 "file": "C:\\Users\\Long\\Workspace\\smart_plug\\Server\\node_modules\\node-red-node-ui-lineargauge\\linear_gauge.js"
             }
         }
+    },
+    "node-red-node-ui-iframe": {
+        "name": "node-red-node-ui-iframe",
+        "version": "0.2.1",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "ui_iframe": {
+                "name": "ui_iframe",
+                "types": [
+                    "ui_iframe"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-node-ui-iframe",
+                "file": "C:\\Users\\Long\\Workspace\\smart_plug\\Server\\node_modules\\node-red-node-ui-iframe\\ui_iframe.js"
+            }
+        }
+    },
+    "node-red-contrib-ui-time-scheduler": {
+        "name": "node-red-contrib-ui-time-scheduler",
+        "version": "1.17.2",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "time_scheduler": {
+                "name": "time_scheduler",
+                "types": [
+                    "ui_time_scheduler"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ui-time-scheduler",
+                "file": "C:\\Users\\Long\\Workspace\\smart_plug\\Server\\node_modules\\node-red-contrib-ui-time-scheduler\\time-scheduler.js"
+            }
+        }
     }
 }

@@ -780,5 +780,43 @@
                 "file": "C:\\Users\\Long\\Workspace\\smart_plug\\Server\\node_modules\\node-red-node-ui-iframe\\ui_iframe.js"
             }
         }
+    },
+    "node-red-contrib-ui-time-scheduler": {
+        "name": "node-red-contrib-ui-time-scheduler",
+        "version": "1.17.2",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "time_scheduler": {
+                "name": "time_scheduler",
+                "types": [
+                    "ui_time_scheduler"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ui-time-scheduler",
+                "file": "C:\\Users\\Long\\Workspace\\smart_plug\\Server\\node_modules\\node-red-contrib-ui-time-scheduler\\time-scheduler.js"
+            }
+        }
+    },
+    "node-red-contrib-ui-countdown-timer-switch": {
+        "name": "node-red-contrib-ui-countdown-timer-switch",
+        "version": "1.4.1",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "countdown_timer_switch": {
+                "name": "countdown_timer_switch",
+                "types": [
+                    "ui_countdown_timer_switch"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ui-countdown-timer-switch",
+                "file": "C:\\Users\\Long\\Workspace\\smart_plug\\Server\\node_modules\\node-red-contrib-ui-countdown-timer-switch\\countdown-timer-switch.js"
+            }
+        }
     }
 }
