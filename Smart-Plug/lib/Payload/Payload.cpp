@@ -13,7 +13,8 @@ Payload Payload::fromJson(const String &jsonString)
     return Payload(action);
 }
 
-String Payload::getAction() const {
+String Payload::getAction() const
+{
     return _action;
 }
 // Implementation for RemotePayload class
@@ -68,76 +69,39 @@ RemotePayload RemotePayload::fromJson(const String &jsonString)
 
     return RemotePayload(device, data);
 }
+
+std::vector<RemotePayload> RemotePayload::fromListJson(const String &jsonString)
+{
+    std::vector<RemotePayload> result;
+
+    DynamicJsonDocument doc(1024); // Adjust the size as needed
+    deserializeJson(doc, jsonString);
+
+    if (doc.containsKey("list") && doc["list"].is<JsonArray>())
+    {
+        JsonArray array = doc["list"].as<JsonArray>();
+        for (JsonVariant value : array)
+        {
+            if (value.is<JsonObject>())
+            {
+                RemotePayload payload;
+                JsonObject obj = value.as<JsonObject>();
+
+                if (obj.containsKey("device") && obj.containsKey("data"))
+                {
+                    payload.setDeviceName(obj["device"].as<String>());
+                    payload.setData(obj["data"].as<int>());
+                    result.push_back(payload);
+                }
+                // You may want to handle other cases or provide error handling here
+            }
+        }
+    }
+
+    return result; // Add this line to ensure a return statement at the end
+}
 // ---------------------------------------------------------------------------------------------------------------------------------
 
 // Implementation for TimeSetPayload class
 
 // Default constructor
-
-TimeSetPayload::TimeSetPayload() : time_(0), type_(0), data_(0) {}
-
-// Parameterized constructor implementation
-TimeSetPayload::TimeSetPayload(String device, float time, int type, int data)
-    : device_(device), time_(time), type_(type), data_(data) {}
-
-// Getter and Setter implementations
-String TimeSetPayload::getDeviceName() const
-{
-    return device_;
-}
-int TimeSetPayload::getData() const
-{
-    return data_;
-}
-void TimeSetPayload::setDeviceName(const String &device)
-{
-    device_ = device;
-}
-
-float TimeSetPayload::getTime() const
-{
-    return time_;
-}
-
-void TimeSetPayload::setTime(float time)
-{
-    time_ = time;
-}
-
-int TimeSetPayload::getType() const
-{
-    return type_;
-}
-
-void TimeSetPayload::setType(int type)
-{
-    type_ = type;
-}
-
-// Method to convert object to JSON string
-String TimeSetPayload::toJson() const
-{
-    DynamicJsonDocument doc(256); // Adjust the size based on your JSON data size
-    doc["device"] = device_;
-    doc["time"] = time_;
-    doc["type"] = type_;
-    doc["data"] = data_;
-
-    String jsonString;
-    serializeJson(doc, jsonString);
-    return jsonString;
-}
-
-// Static method to create an object from JSON string
-TimeSetPayload TimeSetPayload::fromJson(const String &jsonString)
-{
-    DynamicJsonDocument doc(256); // Adjust the size based on your JSON data size
-    deserializeJson(doc, jsonString);
-
-    String device = doc["device"];
-    float time = doc["time"];
-    int type = doc["type"];
-    int data = doc["data"];
-
-    return TimeSetPayload(device, time, type, data);
-}
