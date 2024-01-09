@@ -1,19 +1,27 @@
 #include "Payload.h"
 
 // Constructor implementation
-Payload::Payload(int data) : data_(data) {}
+Payload::Payload(String action) : _action(action) {}
 
 // Member function implementation
-void Payload::displayData()
+Payload Payload::fromJson(const String &jsonString)
 {
-    Serial.print("Data: ");
-    Serial.println(data_);
+    DynamicJsonDocument doc(256); // Adjust the size based on your JSON data size
+    deserializeJson(doc, jsonString);
+
+    String action = doc["action"];
+    return Payload(action);
 }
 
+String Payload::getAction() const {
+    return _action;
+}
 // Implementation for RemotePayload class
 
 // Default constructor
-RemotePayload::RemotePayload() : data_(0) {}
+RemotePayload::RemotePayload() : data_(0)
+{
+}
 
 // Parameterized constructor
 RemotePayload::RemotePayload(String dev, int dat) : device_(dev), data_(dat) {}

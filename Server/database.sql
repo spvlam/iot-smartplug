@@ -187,7 +187,7 @@ BEGIN
     END WHILE;
 END //
 
-CREATE TRIGGER UpdateSocketStatus AFTER UPDATE ON Script
+CREATE TRIGGER UpdateSocketStatus AFTER UPDATE ON Scrimpt
 FOR EACH ROW
 BEGIN
     IF OLD.status != NEW.status THEN
