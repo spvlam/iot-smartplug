@@ -2,7 +2,7 @@
 #include <Payload.h>
 #include <WiFiClient.h>
 #include <ESP8266WiFi.h>
-
+// #include <WiFi.h>
 #include <PubSubClient.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
@@ -10,19 +10,25 @@
 #include <cctype> // for toupper
 #include <ArduinoJson.h>
 #include <ESP8266WebServer.h>
+#include <ACS712.h>
 
 #define ONE_SECOND 1000
 #define ONE_MINUTE 60 * ONE_SECOND
 #define ONE_HOUR 60 * ONE_MINUTE
+#define ONE_WIRE_BUS D3
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensor1(&oneWire);
+// ACS712 sensor2(ACS712, D7);
 // put global variable declarations here:
 WiFiClient client;
 PubSubClient mqtt_client(client);
 ESP8266WebServer server(80);
 const int r1 = D1;
 const int r2 = D2;
+const int OutPin = A0;
 char ssid[64];
 char pass[64];
-const char mqtt_sever[] = "192.168.50.72";
+const char mqtt_sever[] = "192.168.161.76";
 const int port = 1883;
 String userName = "";
 String socket1 = "Socket_1";
@@ -191,7 +197,6 @@ void toR2(byte *payload);
 void setupAP();
 void setupMQTT();
 void reconnect();
-void timeSetRemote(TimeSetPayload payload);
 void countDown(int type, float time);
 void remote(RemotePayload payload);
 void handle(byte *payload);
@@ -216,12 +221,34 @@ void setup()
   digitalWrite(r1, HIGH);
   pinMode(r2, OUTPUT);
   digitalWrite(r2, HIGH);
+  // Serial.print("Connecting to ");
+  // Serial.println(ssid);
+  // Serial.println(pass);
+  // WiFi.mode(WIFI_STA);
+  // WiFi.begin(ssid, pass);
+  // while (WiFi.status() != WL_CONNECTED)
+  // {
+  //     delay(500);
+  //     Serial.print(".");
+  // }
+  //     Serial.println("");
+  //     Serial.println("WiFi connected");
+  //     Serial.println("IP address: ");
+  //     Serial.println(WiFi.localIP());
+  sensor1.begin();
   setupAP();
   setupMQTT();
 }
 
 void loop()
 {
+  sensor1.requestTemperatures();
+  // get current temperature and current
+  float temperature = sensor1.getTempCByIndex(0);
+  int value = analogRead(OutPin);
+  float volt = value / 1.0;
+  Serial.printf("Temperature: %.3lf \nCurrent: %.3lf\n", temperature, volt);
+  delay(500);
   if (WiFi.status() != WL_CONNECTED && strcmp(ssid, "") == 0)
   {
     if (WiFi.softAPIP())
