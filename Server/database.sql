@@ -20,7 +20,7 @@ CREATE TABLE `Equipment_Plug` (
     `manager` VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY (`equipmentID`),
     CONSTRAINT `fk_roomName_equipment` FOREIGN KEY (`manager`) REFERENCES `Users`(`userName`)
-);
+);                                                                                                                                              
 CREATE TABLE `Script` (
 	`scriptName` VARCHAR(255) NOT NULL,
     `status` TINYINT DEFAULT 0 CHECK (status IN (0, 1)),
@@ -187,7 +187,7 @@ BEGIN
     END WHILE;
 END //
 
-CREATE TRIGGER UpdateSocketStatus AFTER UPDATE ON Scrimpt
+CREATE TRIGGER UpdateSocketStatus AFTER UPDATE ON Script
 FOR EACH ROW
 BEGIN
     IF OLD.status != NEW.status THEN
@@ -216,4 +216,21 @@ BEGIN
     );
 END //
 
+CREATE FUNCTION changeStatus(socketName_param VARCHAR(255), equipmentID_param VARCHAR(255), newStatus_param TINYINT) RETURNS BOOLEAN
+DETERMINISTIC
+BEGIN
+    DECLARE isUpdated BOOLEAN DEFAULT FALSE;
+
+    UPDATE `Socket`
+    SET `status` = newStatus_param
+    WHERE `socketName` = socketName_param AND `equipmentID` = equipmentID_param;
+
+    IF ROW_COUNT() > 0 THEN
+        SET isUpdated = TRUE;
+    END IF;
+
+    RETURN isUpdated;
+END //
+
 DELIMITER ;
+
