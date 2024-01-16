@@ -34,7 +34,7 @@
     {
         "id": "ed6816ba7f57d2eb",
         "type": "tab",
-        "label": "Flow 3",
+        "label": "DATABASE",
         "disabled": false,
         "info": "",
         "env": []
@@ -51,6 +51,14 @@
         "id": "a1011441c04be54b",
         "type": "tab",
         "label": "Server",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2e80f3d64fb5d6b7",
+        "type": "tab",
+        "label": "Script",
         "disabled": false,
         "info": "",
         "env": []
@@ -195,13 +203,69 @@
         }
     },
     {
+        "id": "8af49c6fff5c41c6",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": true
+    },
+    {
         "id": "1092dc46790792d6",
         "type": "ui_tab",
-        "name": "Login",
+        "name": "Script",
         "icon": "dashboard",
         "order": 1,
         "disabled": false,
         "hidden": false
+    },
+    {
+        "id": "53244fc3c4c150a5",
+        "type": "ui_tab",
+        "name": "Sign Up",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "add1faeab873f5bb",
+        "type": "ui_tab",
+        "name": "Log out",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "38c418ea4142ccd8",
+        "type": "ui_tab",
+        "name": "Time scheduler",
+        "icon": "dashboard",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "1987fbbdac4ac140",
+        "type": "ui_tab",
+        "name": "Remote",
+        "icon": "dashboard",
+        "order": 6,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "878cb2d6465c23c0",
+        "type": "ui_group",
+        "name": "Equipment",
+        "tab": "1987fbbdac4ac140",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "506de255854d948c",
@@ -213,15 +277,6 @@
         "width": "6",
         "collapse": false,
         "className": "login-page"
-    },
-    {
-        "id": "53244fc3c4c150a5",
-        "type": "ui_tab",
-        "name": "Sign Up",
-        "icon": "dashboard",
-        "order": 2,
-        "disabled": false,
-        "hidden": false
     },
     {
         "id": "f0d047bca5f32611",
@@ -276,15 +331,6 @@
         "className": ""
     },
     {
-        "id": "38c418ea4142ccd8",
-        "type": "ui_tab",
-        "name": "Time scheduler",
-        "icon": "dashboard",
-        "order": 5,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "7dee2cf71d18accd",
         "type": "ui_group",
         "name": "Time scheduler",
@@ -322,6 +368,27 @@
         "order": 3,
         "disabled": false,
         "hidden": false
+    },
+    {
+        "id": "e7f976d3ee444ce1",
+        "type": "MySQLdatabase",
+        "name": "IoT",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "iotdb",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "04229a24935bb99a",
+        "type": "ui_group",
+        "name": "Script",
+        "tab": "1092dc46790792d6",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "59189a3ba5967738",
@@ -1902,49 +1969,132 @@
         ]
     },
     {
-        "id": "152b57b93893f581",
-        "type": "ui_ui_control",
-        "z": "cb40a44d23cb5760",
+        "id": "7a9a2c23d29b795c",
+        "type": "mysql",
+        "z": "84070b956f808308",
+        "mydb": "e7f976d3ee444ce1",
+        "name": "DB",
+        "x": 490,
+        "y": 880,
+        "wires": [
+            [
+                "715f58491a1f60db"
+            ]
+        ]
+    },
+    {
+        "id": "d2e8d6e3a81e921a",
+        "type": "mysql",
+        "z": "84070b956f808308",
+        "mydb": "e7f976d3ee444ce1",
+        "name": "DB",
+        "x": 1410,
+        "y": 940,
+        "wires": [
+            [
+                "5df8e50ed7ac47cf"
+            ]
+        ]
+    },
+    {
+        "id": "b87039024240aa5d",
+        "type": "ui_list",
+        "z": "84070b956f808308",
+        "group": "6c08575cbfd2a86f",
+        "name": "Sockets",
+        "order": 1,
+        "width": 6,
+        "height": "4",
+        "lineType": "three",
+        "actionType": "switch",
+        "allowHTML": false,
+        "outputs": 1,
+        "topic": "",
+        "x": 1140,
+        "y": 1180,
+        "wires": [
+            [
+                "60e89b41629b3f2a",
+                "fd4e1fd65be52fcd"
+            ]
+        ]
+    },
+    {
+        "id": "715f58491a1f60db",
+        "type": "ui_table",
+        "z": "84070b956f808308",
+        "group": "878cb2d6465c23c0",
+        "name": "Equipment",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "columns": [],
+        "outputs": 1,
+        "cts": true,
+        "x": 690,
+        "y": 860,
+        "wires": [
+            [
+                "1310eef2ba54e236",
+                "a6cfb31930f45b97"
+            ]
+        ]
+    },
+    {
+        "id": "246dd2f862d481d2",
+        "type": "ui_countdown_timer_switch",
+        "z": "84070b956f808308",
         "name": "",
-        "events": "all",
-        "x": 1220,
-        "y": 400,
+        "label": "Time scheduler",
+        "group": "7dee2cf71d18accd",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "countdowns": [
+            "5",
+            "10",
+            "15",
+            "30"
+        ],
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "topic": "",
+        "outputState": "",
+        "showDropdown": true,
+        "x": 740,
+        "y": 1100,
         "wires": [
             []
         ]
     },
     {
-        "id": "030baa63e035f70f",
-        "type": "ui_button",
-        "z": "cb40a44d23cb5760",
-        "name": "",
-        "group": "506de255854d948c",
-        "order": 3,
+        "id": "7c1552c084a581c8",
+        "type": "ui_list",
+        "z": "84070b956f808308",
+        "group": "04229a24935bb99a",
+        "name": "Script",
+        "order": 1,
         "width": 6,
-        "height": 1,
-        "passthru": false,
-        "label": "Login",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "login-btn",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 250,
-        "y": 300,
+        "height": "4",
+        "lineType": "three",
+        "actionType": "switch",
+        "allowHTML": false,
+        "outputs": 1,
+        "topic": "",
+        "x": 690,
+        "y": 1300,
         "wires": [
             [
-                "2a709be85ec57e04"
+                "e28c026ca1f2b9b6"
             ]
         ]
     },
     {
-        "id": "a0e283fd70b3e27b",
+        "id": "e28c026ca1f2b9b6",
         "type": "change",
-        "z": "cb40a44d23cb5760",
+        "z": "84070b956f808308",
         "name": "",
         "rules": [
             {
@@ -1960,91 +2110,104 @@
         "from": "",
         "to": "",
         "reg": false,
+        "x": 880,
+        "y": 1300,
+        "wires": [
+            [
+                "c05e926d230b5b0a"
+            ]
+        ]
+    },
+    {
+        "id": "18efaa8f5d504672",
+        "type": "function",
+        "z": "84070b956f808308",
+        "name": "function 7",
+        "func": "msg.topic = `select * from Script`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 1260,
+        "wires": [
+            [
+                "e7acb03b4e1f7c87"
+            ]
+        ]
+    },
+    {
+        "id": "e7acb03b4e1f7c87",
+        "type": "mysql",
+        "z": "84070b956f808308",
+        "mydb": "e7f976d3ee444ce1",
+        "name": "DB",
+        "x": 490,
+        "y": 1260,
+        "wires": [
+            [
+                "7c1552c084a581c8"
+            ]
+        ]
+    },
+    {
+        "id": "c05e926d230b5b0a",
+        "type": "function",
+        "z": "84070b956f808308",
+        "name": "get_Socket_infor",
+        "func": "var id = flow.get(\"scriptName\").scriptName;\nmsg.topic = `select * from Socket where scriptName = '${id}'`;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 1300,
+        "wires": [
+            [
+                "219e021446f05c72"
+            ]
+        ]
+    },
+    {
+        "id": "219e021446f05c72",
+        "type": "mysql",
+        "z": "84070b956f808308",
+        "mydb": "e7f976d3ee444ce1",
+        "name": "DB",
+        "x": 1330,
+        "y": 1300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a0e283fd70b3e27b",
+        "type": "change",
+        "z": "cb40a44d23cb5760",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"tab\": \"Home\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
         "x": 960,
         "y": 300,
         "wires": [
             [
                 "152b57b93893f581"
-            ]
-        ]
-    },
-    {
-        "id": "a5edfb7ae190806f",
-        "type": "ui_text_input",
-        "z": "cb40a44d23cb5760",
-        "name": "",
-        "label": "User Name",
-        "tooltip": "",
-        "group": "506de255854d948c",
-        "order": 1,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "login",
-        "topicType": "msg",
-        "x": 270,
-        "y": 140,
-        "wires": [
-            [
-                "648a07a887f8eeaa"
-            ]
-        ]
-    },
-    {
-        "id": "2c74de7cd0b5fed8",
-        "type": "ui_text_input",
-        "z": "cb40a44d23cb5760",
-        "name": "",
-        "label": "Password",
-        "tooltip": "",
-        "group": "506de255854d948c",
-        "order": 2,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "mode": "password",
-        "delay": 300,
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 260,
-        "y": 200,
-        "wires": [
-            [
-                "f6a06520f31397e6"
-            ]
-        ]
-    },
-    {
-        "id": "4f9d886706c21dc2",
-        "type": "ui_button",
-        "z": "cb40a44d23cb5760",
-        "name": "",
-        "group": "506de255854d948c",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Sign Up",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 260,
-        "y": 400,
-        "wires": [
-            [
-                "3058a20d885a59d9"
             ]
         ]
     },
@@ -2288,28 +2451,16 @@
         ]
     },
     {
-        "id": "62e6c8e41318ed99",
-        "type": "ui_ui_control",
-        "z": "117670200288981a",
-        "name": "",
-        "events": "all",
-        "x": 920,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "51072983b7ba2ee0",
+        "id": "030baa63e035f70f",
         "type": "ui_button",
-        "z": "117670200288981a",
+        "z": "cb40a44d23cb5760",
         "name": "",
-        "group": "f0d047bca5f32611",
+        "group": "506de255854d948c",
         "order": 3,
         "width": 6,
         "height": 1,
         "passthru": false,
-        "label": "Sign Up",
+        "label": "Login",
         "tooltip": "",
         "color": "",
         "bgcolor": "",
@@ -2319,70 +2470,80 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 80,
-        "y": 260,
+        "x": 250,
+        "y": 300,
         "wires": [
             [
-                "4beab38a2329d095"
+                "2a709be85ec57e04"
             ]
         ]
     },
     {
         "id": "df3b8a118cdab206",
         "type": "ui_text_input",
-        "z": "117670200288981a",
+        "z": "cb40a44d23cb5760",
         "name": "",
         "label": "User Name",
         "tooltip": "",
-        "group": "f0d047bca5f32611",
+        "group": "506de255854d948c",
         "order": 1,
         "width": 6,
         "height": 1,
         "passthru": true,
         "mode": "text",
         "delay": 300,
-        "topic": "userName",
+        "topic": "topic",
         "sendOnBlur": true,
-        "className": "",
-        "topicType": "str",
-        "x": 90,
-        "y": 100,
+        "className": "login",
+        "topicType": "msg",
+        "x": 270,
+        "y": 140,
         "wires": [
             [
-                "24ef9f81896506cd"
+                "648a07a887f8eeaa"
             ]
         ]
     },
     {
-        "id": "71ade9357a5df070",
+        "id": "2c74de7cd0b5fed8",
         "type": "ui_text_input",
-        "z": "117670200288981a",
+        "z": "cb40a44d23cb5760",
         "name": "",
         "label": "Password",
         "tooltip": "",
-        "group": "f0d047bca5f32611",
+        "group": "506de255854d948c",
         "order": 2,
         "width": 6,
         "height": 1,
         "passthru": true,
         "mode": "password",
         "delay": 300,
-        "topic": "pass",
+        "topic": "topic",
         "sendOnBlur": true,
         "className": "",
-        "topicType": "str",
-        "x": 80,
-        "y": 160,
+        "topicType": "msg",
+        "x": 260,
+        "y": 200,
         "wires": [
             [
-                "3e404ac595cdba81"
+                "f6a06520f31397e6"
             ]
         ]
     },
     {
-        "id": "4be78e76d2696a4d",
-        "type": "ui_button",
-        "z": "117670200288981a",
+        "id": "7d1d95721465657d",
+        "type": "ui_toast",
+        "z": "cb40a44d23cb5760",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
         "name": "",
         "group": "f0d047bca5f32611",
         "order": 4,
@@ -2403,7 +2564,34 @@
         "y": 320,
         "wires": [
             [
-                "63efd1d1b8ce68a4"
+                "e2d7f01e7dbb3172"
+            ]
+        ]
+    },
+    {
+        "id": "8b765c7ce994fe7b",
+        "type": "change",
+        "z": "117670200288981a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"tab\": \"Home\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 260,
+        "wires": [
+            [
+                "62e6c8e41318ed99"
             ]
         ]
     },
@@ -2431,20 +2619,6 @@
         "wires": [
             [
                 "62e6c8e41318ed99"
-            ]
-        ]
-    },
-    {
-        "id": "d8330af53d1f39fa",
-        "type": "mysql",
-        "z": "117670200288981a",
-        "mydb": "e7f976d3ee444ce1",
-        "name": "DB",
-        "x": 770,
-        "y": 100,
-        "wires": [
-            [
-                "42a15b12e2c164c3"
             ]
         ]
     },
@@ -2516,6 +2690,155 @@
         "y": 160,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "650a51b4e0f2e4aa",
+        "type": "change",
+        "z": "117670200288981a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "42a15b12e2c164c3",
+        "type": "debug",
+        "z": "117670200288981a",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "51072983b7ba2ee0",
+        "type": "ui_button",
+        "z": "117670200288981a",
+        "name": "",
+        "group": "f0d047bca5f32611",
+        "order": 3,
+        "width": "6",
+        "height": "1",
+        "passthru": false,
+        "label": "Sign Up",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "login-btn",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 80,
+        "y": 260,
+        "wires": [
+            [
+                "4beab38a2329d095"
+            ]
+        ]
+    },
+    {
+        "id": "4be78e76d2696a4d",
+        "type": "ui_button",
+        "z": "117670200288981a",
+        "name": "",
+        "group": "f0d047bca5f32611",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Sign In",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 60,
+        "y": 320,
+        "wires": [
+            [
+                "63efd1d1b8ce68a4"
+            ]
+        ]
+    },
+    {
+        "id": "df3b8a118cdab206",
+        "type": "ui_text_input",
+        "z": "117670200288981a",
+        "name": "",
+        "label": "User Name",
+        "tooltip": "",
+        "group": "f0d047bca5f32611",
+        "order": 1,
+        "width": "6",
+        "height": "1",
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "userName",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "str",
+        "x": 90,
+        "y": 100,
+        "wires": [
+            [
+                "24ef9f81896506cd"
+            ]
+        ]
+    },
+    {
+        "id": "71ade9357a5df070",
+        "type": "ui_text_input",
+        "z": "117670200288981a",
+        "name": "",
+        "label": "Password",
+        "tooltip": "",
+        "group": "f0d047bca5f32611",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "passthru": true,
+        "mode": "password",
+        "delay": 300,
+        "topic": "pass",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "str",
+        "x": 80,
+        "y": 160,
+        "wires": [
+            [
+                "3e404ac595cdba81"
+            ]
         ]
     },
     {
@@ -2783,37 +3106,6 @@
         ]
     },
     {
-        "id": "b6e4508264098a08",
-        "type": "ui_button",
-        "z": "5b7c3022fb252408",
-        "name": "",
-        "group": "41226fd164ba85b2",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Log out",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 120,
-        "y": 240,
-        "wires": [
-            [
-                "ecac4c174bc61c82",
-                "eaa97a455a08aa68",
-                "063f27fe2a94dc02",
-                "04471693fce9e1d6"
-            ]
-        ]
-    },
-    {
         "id": "ecac4c174bc61c82",
         "type": "change",
         "z": "5b7c3022fb252408",
@@ -2895,18 +3187,6 @@
         ]
     },
     {
-        "id": "f784af9c6ec11c36",
-        "type": "ui_ui_control",
-        "z": "5b7c3022fb252408",
-        "name": "",
-        "events": "all",
-        "x": 800,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "04471693fce9e1d6",
         "type": "change",
         "z": "5b7c3022fb252408",
@@ -2952,6 +3232,49 @@
         "wires": []
     },
     {
+        "id": "b6e4508264098a08",
+        "type": "ui_button",
+        "z": "5b7c3022fb252408",
+        "name": "",
+        "group": "41226fd164ba85b2",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Log out",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            [
+                "ecac4c174bc61c82",
+                "eaa97a455a08aa68",
+                "063f27fe2a94dc02",
+                "04471693fce9e1d6"
+            ]
+        ]
+    },
+    {
+        "id": "f784af9c6ec11c36",
+        "type": "ui_ui_control",
+        "z": "5b7c3022fb252408",
+        "name": "",
+        "events": "all",
+        "x": 800,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "2136d49bc0b3c422",
         "type": "mqtt in",
         "z": "a1011441c04be54b",
@@ -2989,43 +3312,6 @@
         "x": 540,
         "y": 120,
         "wires": []
-    },
-    {
-        "id": "e6b2a17ef18f5e8c",
-        "type": "aedes broker",
-        "z": "a1011441c04be54b",
-        "name": "",
-        "mqtt_port": 1883,
-        "mqtt_ws_bind": "port",
-        "mqtt_ws_port": "",
-        "mqtt_ws_path": "",
-        "cert": "",
-        "key": "",
-        "certname": "",
-        "keyname": "",
-        "persistence_bind": "memory",
-        "dburl": "",
-        "usetls": false,
-        "x": 190,
-        "y": 280,
-        "wires": [
-            [],
-            []
-        ]
-    },
-    {
-        "id": "3b87508924110923",
-        "type": "mysql",
-        "z": "a1011441c04be54b",
-        "mydb": "e7f976d3ee444ce1",
-        "name": "DB",
-        "x": 870,
-        "y": 180,
-        "wires": [
-            [
-                "9592315dbb7759ad"
-            ]
-        ]
     },
     {
         "id": "780121c3330a1363",
@@ -3090,5 +3376,42 @@
         "x": 1040,
         "y": 180,
         "wires": []
+    },
+    {
+        "id": "e6b2a17ef18f5e8c",
+        "type": "aedes broker",
+        "z": "a1011441c04be54b",
+        "name": "",
+        "mqtt_port": 1883,
+        "mqtt_ws_bind": "port",
+        "mqtt_ws_port": "",
+        "mqtt_ws_path": "",
+        "cert": "",
+        "key": "",
+        "certname": "",
+        "keyname": "",
+        "persistence_bind": "memory",
+        "dburl": "",
+        "usetls": false,
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "3b87508924110923",
+        "type": "mysql",
+        "z": "a1011441c04be54b",
+        "mydb": "e7f976d3ee444ce1",
+        "name": "DB",
+        "x": 870,
+        "y": 180,
+        "wires": [
+            [
+                "9592315dbb7759ad"
+            ]
+        ]
     }
 ]
