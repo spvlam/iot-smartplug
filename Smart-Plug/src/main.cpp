@@ -28,12 +28,12 @@ const int r2 = D2;
 const int OutPin = A0;
 char ssid[64];
 char pass[64];
-const char mqtt_sever[] = "192.168.161.76";
+const char mqtt_sever[] = "192.168.50.72";
 const int port = 1883;
 String userName = "";
 String socket1 = "Socket_1";
 String socket2 = "Socket_2";
-const char *equipmentId = "82876453-ae65-11ee-935a-bce92f7b38bc";
+const char *equipmentId = "88d4ea95-b44d-11ee-b6b1-bce92f7b38bc";
 String firstPayload = "";
 bool isFirstMSG = true;
 String webPage = R"(
@@ -275,6 +275,10 @@ void loop()
 
     String tp = userName + '\\' + equipmentId;
     mqtt_client.subscribe(tp.c_str());
+    String subTemp = String(equipmentId) + "\\TEMPERATURE";
+    String subCurrent = String(equipmentId) + "\\CURRENT";
+    mqtt_client.publish(subTemp.c_str(), String(temperature).c_str());
+    mqtt_client.publish(subCurrent.c_str(), String(volt).c_str());
   }
   // put your main code here, to run repeatedly:
 }
