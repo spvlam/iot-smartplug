@@ -34,4 +34,22 @@ public:
     static RemotePayload fromJson(const String &jsonString);
     static std::vector<RemotePayload> fromListJson(const String &jsonString);
 };
+
+class ScriptPayload : public RemotePayload {
+    private:
+        String _eqId;
+    public:
+    ScriptPayload();
+    ScriptPayload( String eqId, String dev, int dat);
+    String getDeviceName() const;
+    void setDeviceName(const String &device);
+    // Getter and Setter for Data
+    int getData() const;
+    void setData(int data);
+    String getEQId() const;
+    void setEQId(const String &eqId);
+    String toJson() const;
+    static ScriptPayload fromJson(const String &jsonString);
+    static std::vector<ScriptPayload> fromListJson(const String &jsonString);
+};
 #endif

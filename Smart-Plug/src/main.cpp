@@ -191,21 +191,6 @@ button{
 )";
 
 // put function declarations here:
-void callBack(char *topic, byte *payload, unsigned int length);
-void toR1(byte *payload);
-void toR2(byte *payload);
-void setupAP();
-void setupMQTT();
-void reconnect();
-void countDown(int type, float time);
-void remote(RemotePayload payload);
-void handle(byte *payload);
-int connectWifi();
-String fPayload(String userName, String password);
-void handleConnect();
-void handleLogin();
-void getLogin();
-void login();
 bool wifiConnected = false;
 
 void handleRoot()
@@ -221,20 +206,6 @@ void setup()
   digitalWrite(r1, HIGH);
   pinMode(r2, OUTPUT);
   digitalWrite(r2, HIGH);
-  // Serial.print("Connecting to ");
-  // Serial.println(ssid);
-  // Serial.println(pass);
-  // WiFi.mode(WIFI_STA);
-  // WiFi.begin(ssid, pass);
-  // while (WiFi.status() != WL_CONNECTED)
-  // {
-  //     delay(500);
-  //     Serial.print(".");
-  // }
-  //     Serial.println("");
-  //     Serial.println("WiFi connected");
-  //     Serial.println("IP address: ");
-  //     Serial.println(WiFi.localIP());
   sensor1.begin();
   setupAP();
   setupMQTT();
@@ -242,12 +213,16 @@ void setup()
 
 void loop()
 {
+  String tp = userName + '\\' + equipmentId;
+  String tpS = userName + "\\SCRIPT";
+  String subTemp = String(equipmentId) + "\\TEMPERATURE";
+  String subCurrent = String(equipmentId) + "\\CURRENT";
   sensor1.requestTemperatures();
   // get current temperature and current
   float temperature = sensor1.getTempCByIndex(0);
   int value = analogRead(OutPin);
   float volt = value / 1.0;
-  Serial.printf("Temperature: %.3lf \nCurrent: %.3lf\n", temperature, volt);
+  // Serial.printf("Temperature: %.3lf \nCurrent: %.3lf\n", temperature, volt);
   delay(500);
   if (WiFi.status() != WL_CONNECTED && strcmp(ssid, "") == 0)
   {
@@ -268,15 +243,10 @@ void loop()
     if (!mqtt_client.connected())
     {
       reconnect();
+      mqtt_client.subscribe(tp.c_str());
+      mqtt_client.subscribe(tpS.c_str());
     }
     mqtt_client.loop();
-    // unsigned long now = millis();
-    // mqtt_client.publish("from-client", firstPayload.c_str());
-
-    String tp = userName + '\\' + equipmentId;
-    mqtt_client.subscribe(tp.c_str());
-    String subTemp = String(equipmentId) + "\\TEMPERATURE";
-    String subCurrent = String(equipmentId) + "\\CURRENT";
     mqtt_client.publish(subTemp.c_str(), String(temperature).c_str());
     mqtt_client.publish(subCurrent.c_str(), String(volt).c_str());
   }
@@ -297,7 +267,7 @@ void callBack(char *topic, byte *payload, unsigned int length)
   }
   else
   {
-    handle(payload);
+    handleRequest(payload);
   }
 }
 
@@ -416,12 +386,13 @@ void remote(RemotePayload payload)
     digitalWrite(r2, payload.getData());
   }
 }
-void handle(byte *payload)
+void handleRequest(byte *payload)
 {
   String payloadStr = String((char *)payload);
   Payload action = Payload::fromJson(payloadStr);
   if (action.getAction() == "REMOTE")
   {
+
     RemotePayload remotePayload = RemotePayload::fromJson(payloadStr);
     remote(remotePayload);
   }
@@ -431,6 +402,15 @@ void handle(byte *payload)
     for (unsigned int i = 0; i < listRemote.size(); i++)
     {
       remote(listRemote[i]);
+    }
+  }
+  else if (action.getAction() == "SCRIPT")
+  {
+    std::vector<ScriptPayload> listRemote = ScriptPayload::fromListJson(payloadStr);
+    for (unsigned int i = 0; i < listRemote.size(); i++)
+    {
+      if (listRemote[i].getEQId() == equipmentId)
+        remote(listRemote[i]);
     }
   }
 }
