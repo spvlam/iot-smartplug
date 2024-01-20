@@ -1,6 +1,6 @@
 [
     {
-        "id": "84070b956f808308",
+        "id": "c4d0c67915ccb15e",
         "type": "tab",
         "label": "Home",
         "disabled": false,
@@ -8,7 +8,7 @@
         "env": []
     },
     {
-        "id": "9a76a4e8bdd99e48",
+        "id": "07c88e5ee81fcd05",
         "type": "tab",
         "label": "Chart",
         "disabled": false,
@@ -16,7 +16,7 @@
         "env": []
     },
     {
-        "id": "cb40a44d23cb5760",
+        "id": "c1cbdaa6a3f38f38",
         "type": "tab",
         "label": "Sign In",
         "disabled": false,
@@ -24,7 +24,7 @@
         "env": []
     },
     {
-        "id": "117670200288981a",
+        "id": "403d1237864cacc4",
         "type": "tab",
         "label": "Sign Up",
         "disabled": false,
@@ -32,7 +32,7 @@
         "env": []
     },
     {
-        "id": "ed6816ba7f57d2eb",
+        "id": "08c71598acb2a15f",
         "type": "tab",
         "label": "Flow 3",
         "disabled": false,
@@ -40,7 +40,7 @@
         "env": []
     },
     {
-        "id": "5b7c3022fb252408",
+        "id": "b10b07ba34052eb5",
         "type": "tab",
         "label": "Logout",
         "disabled": false,
@@ -48,7 +48,7 @@
         "env": []
     },
     {
-        "id": "a1011441c04be54b",
+        "id": "3accd8f23e4a4ef8",
         "type": "tab",
         "label": "Server",
         "disabled": false,
@@ -324,9 +324,28 @@
         "hidden": false
     },
     {
-        "id": "59189a3ba5967738",
+        "id": "5ff0b5fe3e3f012d",
+        "type": "ui_tab",
+        "name": "Script",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "fe991fbbebceaa63",
+        "type": "ui_group",
+        "name": "Script",
+        "tab": "5ff0b5fe3e3f012d",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "37e92e8fa5a3a8a2",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "Equipment",
         "func": "msg.topic = `select * from Equipment_Plug where manager = '${global.get(\"userName\")}'`\nreturn msg;",
         "outputs": 1,
@@ -335,32 +354,32 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
-        "y": 860,
+        "x": 295,
+        "y": 859.9999961853027,
         "wires": [
             [
-                "7a9a2c23d29b795c"
+                "1b0ea9146d2b2cd7"
             ]
         ]
     },
     {
-        "id": "7a9a2c23d29b795c",
+        "id": "1b0ea9146d2b2cd7",
         "type": "mysql",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "mydb": "e7f976d3ee444ce1",
         "name": "DB",
-        "x": 470,
-        "y": 860,
+        "x": 475,
+        "y": 859.9999961853027,
         "wires": [
             [
-                "41fbcad662a3185a"
+                "b5770afe5f299760"
             ]
         ]
     },
     {
-        "id": "715f58491a1f60db",
+        "id": "ec94c10a3602187e",
         "type": "ui_table",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "group": "878cb2d6465c23c0",
         "name": "Equipment",
         "order": 1,
@@ -369,18 +388,18 @@
         "columns": [],
         "outputs": 1,
         "cts": true,
-        "x": 1090,
-        "y": 860,
+        "x": 1095,
+        "y": 859.9999961853027,
         "wires": [
             [
-                "abe84be22eee5e3d"
+                "420955d1f903963c"
             ]
         ]
     },
     {
-        "id": "1310eef2ba54e236",
+        "id": "3745f40c34324cac",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "get_Socket_infor",
         "func": "var id = flow.get(\"chose\").Id;\nmsg.topic = `select * from Socket where equipmentID = '${id}'`;\nreturn msg;\n",
         "outputs": 1,
@@ -389,32 +408,32 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 330,
-        "y": 1000,
+        "x": 335,
+        "y": 999.9999961853027,
         "wires": [
             [
-                "d2e8d6e3a81e921a"
+                "efaa26a55a3bb518"
             ]
         ]
     },
     {
-        "id": "d2e8d6e3a81e921a",
+        "id": "efaa26a55a3bb518",
         "type": "mysql",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "mydb": "e7f976d3ee444ce1",
         "name": "DB",
-        "x": 530,
-        "y": 1000,
+        "x": 535,
+        "y": 999.9999961853027,
         "wires": [
             [
-                "5df8e50ed7ac47cf"
+                "3992ca0d32612bd8"
             ]
         ]
     },
     {
-        "id": "5df8e50ed7ac47cf",
+        "id": "3992ca0d32612bd8",
         "type": "change",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "rules": [
             {
@@ -430,38 +449,38 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 710,
-        "y": 1000,
+        "x": 715,
+        "y": 999.9999961853027,
         "wires": [
             [
-                "33c42e995201f674"
+                "5ea029162339bf9a"
             ]
         ]
     },
     {
-        "id": "33c42e995201f674",
+        "id": "5ea029162339bf9a",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "List",
-        "func": "var data = flow.get(\"data\");\nvar payload = []\ndata.forEach(function(element) {\n    payload.push({\n        title: element.socketName,\n        isChecked: element.status\n    })\n});\nmsg.payload = payload\nreturn msg;",
+        "func": "var data = flow.get(\"data\");\nvar payload = []\ndata.forEach(function(element) {\n    payload.push({\n        title: element.socketName,\n        isChecked: element.status == 1 ? true : false\n    })\n});\nmsg.payload = payload\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1030,
-        "y": 1000,
+        "x": 1035,
+        "y": 999.9999961853027,
         "wires": [
             [
-                "b87039024240aa5d"
+                "1395ade742d01f1b"
             ]
         ]
     },
     {
-        "id": "b87039024240aa5d",
+        "id": "1395ade742d01f1b",
         "type": "ui_list",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "group": "6c08575cbfd2a86f",
         "name": "Sockets",
         "order": 1,
@@ -472,18 +491,18 @@
         "allowHTML": false,
         "outputs": 1,
         "topic": "",
-        "x": 300,
-        "y": 1120,
+        "x": 305,
+        "y": 1119.9999961853027,
         "wires": [
             [
-                "fd4e1fd65be52fcd"
+                "194a8e0c262ad78c"
             ]
         ]
     },
     {
-        "id": "6d39a7d6e52309ba",
+        "id": "86f5517667649a85",
         "type": "mqtt out",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "topic": "",
         "qos": "",
@@ -494,14 +513,14 @@
         "correl": "",
         "expiry": "",
         "broker": "a78910a7de187960",
-        "x": 1630,
-        "y": 1120,
+        "x": 1635,
+        "y": 1119.9999961853027,
         "wires": []
     },
     {
-        "id": "4f0a67ef44121dbb",
+        "id": "52ce2b5f21bc9306",
         "type": "switch",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "property": "$boolean(msg.payload.isChecked)",
         "propertyType": "jsonata",
@@ -520,23 +539,23 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1030,
-        "y": 1120,
+        "x": 1035,
+        "y": 1119.9999961853027,
         "wires": [
             [
-                "e37f8e988df5aee0",
-                "b1ae5871e52d450c"
+                "960d68ddeeb5cb26",
+                "cf98e18c6e31a67a"
             ],
             [
-                "5bcacbe606208d0a",
-                "83a41fde59276761"
+                "e0d955e85e110cde",
+                "8cb43d33e389f699"
             ]
         ]
     },
     {
-        "id": "e37f8e988df5aee0",
+        "id": "960d68ddeeb5cb26",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "turnOn",
         "func": "msg.topic = `${global.get(\"userName\")}\\\\${flow.get(\"chose\").Id}`\nmsg.payload = {\n    action: \"REMOTE\",\n    device: flow.get(\"device\").title,\n    data: 1\n}\nreturn msg;",
         "outputs": 1,
@@ -545,18 +564,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1390,
-        "y": 1080,
+        "x": 1395,
+        "y": 1079.9999961853027,
         "wires": [
             [
-                "6d39a7d6e52309ba"
+                "86f5517667649a85"
             ]
         ]
     },
     {
-        "id": "fd4e1fd65be52fcd",
+        "id": "194a8e0c262ad78c",
         "type": "change",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "rules": [
             {
@@ -572,18 +591,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 700,
-        "y": 1120,
+        "x": 705,
+        "y": 1119.9999961853027,
         "wires": [
             [
-                "4f0a67ef44121dbb"
+                "52ce2b5f21bc9306"
             ]
         ]
     },
     {
-        "id": "5bcacbe606208d0a",
+        "id": "e0d955e85e110cde",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "turnOff",
         "func": "msg.topic = `${global.get(\"userName\")}\\\\${flow.get(\"chose\").Id}`\nmsg.payload = {\n    action : \"REMOTE\",\n    device: flow.get(\"device\").title,\n    data: 0\n}\nreturn msg;",
         "outputs": 1,
@@ -592,18 +611,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1390,
-        "y": 1160,
+        "x": 1395,
+        "y": 1159.9999961853027,
         "wires": [
             [
-                "6d39a7d6e52309ba"
+                "86f5517667649a85"
             ]
         ]
     },
     {
-        "id": "426029266f3d85d2",
+        "id": "4c8bd95bf50ef6ea",
         "type": "inject",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "props": [
             {
@@ -621,19 +640,20 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 70,
-        "y": 860,
+        "x": 75,
+        "y": 859.9999961853027,
         "wires": [
             [
-                "59189a3ba5967738",
-                "748988afc5ce1bc4"
+                "37e92e8fa5a3a8a2",
+                "a2a02aad63e765a1",
+                "2cf74505d132ed69"
             ]
         ]
     },
     {
-        "id": "41fbcad662a3185a",
+        "id": "b5770afe5f299760",
         "type": "change",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "rules": [
             {
@@ -649,18 +669,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 690,
-        "y": 860,
+        "x": 695,
+        "y": 859.9999961853027,
         "wires": [
             [
-                "8021cb75c7d10d8e"
+                "338cdd1ba024d584"
             ]
         ]
     },
     {
-        "id": "8021cb75c7d10d8e",
+        "id": "338cdd1ba024d584",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "Table",
         "func": "var data = flow.get(\"eq\");\nvar payload = []\ndata.forEach(function(element) {\n    payload.push({\n    Id: element.equipmentID,\n    Name: element.equipmentName,\n    Socket: element.numberSocket,\n    Location: element.position\n    })\n});\nmsg.payload = payload\nreturn msg;",
         "outputs": 1,
@@ -669,18 +689,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 890,
-        "y": 860,
+        "x": 895,
+        "y": 859.9999961853027,
         "wires": [
             [
-                "715f58491a1f60db"
+                "ec94c10a3602187e"
             ]
         ]
     },
     {
-        "id": "abe84be22eee5e3d",
+        "id": "420955d1f903963c",
         "type": "change",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "rules": [
             {
@@ -696,18 +716,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1300,
-        "y": 860,
+        "x": 1305,
+        "y": 859.9999961853027,
         "wires": [
             [
-                "1310eef2ba54e236"
+                "3745f40c34324cac"
             ]
         ]
     },
     {
-        "id": "b0c3e92e28d94a68",
+        "id": "d9211bf154adbd84",
         "type": "ui_table",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "group": "7dee2cf71d18accd",
         "name": "Equipment",
         "order": 1,
@@ -716,18 +736,18 @@
         "columns": [],
         "outputs": 1,
         "cts": true,
-        "x": 470,
-        "y": 1260,
+        "x": 475,
+        "y": 1259.9999961853027,
         "wires": [
             [
-                "c4490a55203833be"
+                "cad4c286614c2c39"
             ]
         ]
     },
     {
-        "id": "748988afc5ce1bc4",
+        "id": "a2a02aad63e765a1",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "Table",
         "func": "var data = flow.get(\"eq\");\nvar payload = []\ndata.forEach(function(element) {\n    payload.push({\n    Id: element.equipmentID,\n    Name: element.equipmentName,\n    Socket: element.numberSocket,\n    Location: element.position\n    })\n});\nmsg.payload = payload\nreturn msg;",
         "outputs": 1,
@@ -736,18 +756,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 250,
-        "y": 1260,
+        "x": 255,
+        "y": 1259.9999961853027,
         "wires": [
             [
-                "b0c3e92e28d94a68"
+                "d9211bf154adbd84"
             ]
         ]
     },
     {
-        "id": "c4490a55203833be",
+        "id": "cad4c286614c2c39",
         "type": "change",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "rules": [
             {
@@ -763,19 +783,19 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 740,
-        "y": 1260,
+        "x": 745,
+        "y": 1259.9999961853027,
         "wires": [
             [
-                "13626b9a93f09e91",
-                "da56c7b158e831ea"
+                "5af1e10758326e03",
+                "f0d26208a2044679"
             ]
         ]
     },
     {
-        "id": "13626b9a93f09e91",
+        "id": "5af1e10758326e03",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "get_Socket_infor",
         "func": "var id = flow.get(\"chose\").Id;\nmsg.topic = `select * from Socket where equipmentID = '${id}'`;\nreturn msg;\n",
         "outputs": 1,
@@ -784,32 +804,32 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1010,
-        "y": 1260,
+        "x": 1015,
+        "y": 1259.9999961853027,
         "wires": [
             [
-                "c79d846f6cc36e22"
+                "173fd6e4ac6824c4"
             ]
         ]
     },
     {
-        "id": "c79d846f6cc36e22",
+        "id": "173fd6e4ac6824c4",
         "type": "mysql",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "mydb": "e7f976d3ee444ce1",
         "name": "DB",
-        "x": 1290,
-        "y": 1260,
+        "x": 1295,
+        "y": 1259.9999961853027,
         "wires": [
             [
-                "4eff14b24794a344"
+                "b59b09c464cb8fa4"
             ]
         ]
     },
     {
-        "id": "4eff14b24794a344",
+        "id": "b59b09c464cb8fa4",
         "type": "change",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "rules": [
             {
@@ -825,18 +845,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 270,
-        "y": 1340,
+        "x": 275,
+        "y": 1339.9999961853027,
         "wires": [
             [
-                "d0d4607575998a22"
+                "f85b1b95bac9e4b9"
             ]
         ]
     },
     {
-        "id": "9748a949bd2ea191",
+        "id": "89af2dfa92117f51",
         "type": "mqtt out",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "topic": "",
         "qos": "",
@@ -852,9 +872,9 @@
         "wires": []
     },
     {
-        "id": "59c504f14bb436b1",
+        "id": "31e152f65223a58b",
         "type": "switch",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "property": "payload",
         "propertyType": "msg",
@@ -877,19 +897,19 @@
         "y": 1880,
         "wires": [
             [
-                "e3c36906a5a3b098",
-                "eb2ed69913f11140"
+                "bd871cdf616d3763",
+                "0f117ca694b90508"
             ],
             [
-                "4f6fe7d05c55ec16",
-                "8b922cac78f17524"
+                "66b7bfeeeb72be07",
+                "1b636c9987f2824d"
             ]
         ]
     },
     {
-        "id": "e3c36906a5a3b098",
+        "id": "bd871cdf616d3763",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "turnOn",
         "func": "msg.topic = `${global.get(\"userName\")}\\\\${flow.get(\"chose\").Id}`\nvar list = [];\nvar data = flow.get(\"selected\");\ndata.forEach(function(element) {\n    if(element.isChecked){\n        list.push(\n            {\n            device: element.title,\n            data: 1\n            }\n        )\n    }\n});\nmsg.payload = {\n    action: \"SET_TIME\",\n    list: list\n}\nreturn msg;",
         "outputs": 1,
@@ -902,16 +922,16 @@
         "y": 1840,
         "wires": [
             [
-                "9748a949bd2ea191",
-                "717b9f95adc8a0a9",
-                "011c68f52e77e425"
+                "89af2dfa92117f51",
+                "b72c996895fa1685",
+                "522f90353332b2af"
             ]
         ]
     },
     {
-        "id": "4f6fe7d05c55ec16",
+        "id": "66b7bfeeeb72be07",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "turnOff",
         "func": "msg.topic = `${global.get(\"userName\")}\\\\${flow.get(\"chose\").Id}`\nvar list = [];\nvar data = flow.get(\"selected\");\ndata.forEach(function(element) {\n    if(element.isChecked){\n        list.push(\n            {\n            device: element.title,\n            data: 0\n            }\n        )\n    }\n});\nmsg.payload = {\n    action: \"SET_TIME\",\n    list: list\n}\nreturn msg;",
         "outputs": 1,
@@ -924,16 +944,16 @@
         "y": 1920,
         "wires": [
             [
-                "9748a949bd2ea191",
-                "de4c67c47b1e5029",
-                "011c68f52e77e425"
+                "89af2dfa92117f51",
+                "16f675c6ce6e0213",
+                "522f90353332b2af"
             ]
         ]
     },
     {
-        "id": "d0d4607575998a22",
+        "id": "f85b1b95bac9e4b9",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "List",
         "func": "var data = flow.get(\"data\");\nvar payload = []\ndata.forEach(function(element) {\n    payload.push({\n        title: element.socketName,\n        description: element.status == 1 ? \"On\" : \"Off\",\n        isChecked: false\n    })\n});\nmsg.payload = payload\nreturn msg;",
         "outputs": 1,
@@ -942,20 +962,20 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 470,
-        "y": 1340,
+        "x": 475,
+        "y": 1339.9999961853027,
         "wires": [
             [
-                "dba2635d4b446f13",
-                "4a0e9b72c96cb201",
-                "c298ef8b07a47b4a"
+                "2d322ff08c7e0638",
+                "d04901804ef7bb93",
+                "a95d676cb74f1e2b"
             ]
         ]
     },
     {
-        "id": "dba2635d4b446f13",
+        "id": "2d322ff08c7e0638",
         "type": "ui_list",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "group": "7dee2cf71d18accd",
         "name": "Sockets",
         "order": 1,
@@ -966,19 +986,19 @@
         "allowHTML": false,
         "outputs": 1,
         "topic": "",
-        "x": 700,
-        "y": 1340,
+        "x": 705,
+        "y": 1339.9999961853027,
         "wires": [
             [
-                "55206abda1f39c60",
-                "4e9b9799dada6d92"
+                "12dc737b91454df1",
+                "a2eb806a58179041"
             ]
         ]
     },
     {
-        "id": "4a0e9b72c96cb201",
+        "id": "d04901804ef7bb93",
         "type": "debug",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "debug 2",
         "active": true,
         "tosidebar": true,
@@ -987,14 +1007,14 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 530,
-        "y": 1480,
+        "x": 665,
+        "y": 1439.9999961853027,
         "wires": []
     },
     {
-        "id": "da56c7b158e831ea",
+        "id": "f0d26208a2044679",
         "type": "debug",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "debug 3",
         "active": true,
         "tosidebar": true,
@@ -1003,30 +1023,31 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 930,
-        "y": 1200,
+        "x": 935,
+        "y": 1199.9999961853027,
         "wires": []
     },
     {
-        "id": "55206abda1f39c60",
+        "id": "12dc737b91454df1",
         "type": "debug",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "debug 4",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 890,
-        "y": 1540,
+        "x": 895,
+        "y": 1539.9999961853027,
         "wires": []
     },
     {
-        "id": "c298ef8b07a47b4a",
+        "id": "a95d676cb74f1e2b",
         "type": "change",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "rules": [
             {
@@ -1042,18 +1063,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 360,
-        "y": 1560,
+        "x": 465,
+        "y": 1499.9999961853027,
         "wires": [
             [
-                "d84a8561be717a9b"
+                "27d55be5da93230d"
             ]
         ]
     },
     {
-        "id": "4e9b9799dada6d92",
+        "id": "a2eb806a58179041",
         "type": "change",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "rules": [
             {
@@ -1069,19 +1090,19 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 890,
-        "y": 1340,
+        "x": 895,
+        "y": 1339.9999961853027,
         "wires": [
             [
-                "6c15ccb7530298ba",
-                "788255e096040c07"
+                "bdab9d50441a1a7c",
+                "a91cd3e8949f9d82"
             ]
         ]
     },
     {
-        "id": "788255e096040c07",
+        "id": "a91cd3e8949f9d82",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "function 2",
         "func": "var data = flow.get(\"sockets\");\nflow.get(\"sockets\").forEach(function(element, index) {\n    if(element.title == flow.get(\"select\").title){\n        data[index].isChecked = flow.get(\"select\").isChecked\n    }\n});\nmsg.payload = data;\nreturn msg;",
         "outputs": 1,
@@ -1090,19 +1111,19 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1080,
-        "y": 1340,
+        "x": 1085,
+        "y": 1339.9999961853027,
         "wires": [
             [
-                "efe45132e87d9324",
-                "229e7ba08cf63426"
+                "e838b25715ba5e9f",
+                "d2ea886ea09ce993"
             ]
         ]
     },
     {
-        "id": "efe45132e87d9324",
+        "id": "e838b25715ba5e9f",
         "type": "debug",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "debug 5",
         "active": true,
         "tosidebar": true,
@@ -1112,14 +1133,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1230,
-        "y": 1340,
+        "x": 1235,
+        "y": 1339.9999961853027,
         "wires": []
     },
     {
-        "id": "6c15ccb7530298ba",
+        "id": "bdab9d50441a1a7c",
         "type": "debug",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "debug 6",
         "active": true,
         "tosidebar": true,
@@ -1129,14 +1150,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1060,
-        "y": 1380,
+        "x": 1065,
+        "y": 1379.9999961853027,
         "wires": []
     },
     {
-        "id": "d84a8561be717a9b",
+        "id": "27d55be5da93230d",
         "type": "debug",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "debug 7",
         "active": true,
         "tosidebar": true,
@@ -1145,14 +1166,14 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 580,
-        "y": 1560,
+        "x": 665,
+        "y": 1499.9999961853027,
         "wires": []
     },
     {
-        "id": "229e7ba08cf63426",
+        "id": "d2ea886ea09ce993",
         "type": "change",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "rules": [
             {
@@ -1168,16 +1189,16 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1210,
-        "y": 1540,
+        "x": 1215,
+        "y": 1539.9999961853027,
         "wires": [
             []
         ]
     },
     {
-        "id": "717b9f95adc8a0a9",
+        "id": "b72c996895fa1685",
         "type": "debug",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "debug 9",
         "active": true,
         "tosidebar": true,
@@ -1192,9 +1213,9 @@
         "wires": []
     },
     {
-        "id": "de4c67c47b1e5029",
+        "id": "16f675c6ce6e0213",
         "type": "debug",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "debug 10",
         "active": true,
         "tosidebar": true,
@@ -1204,14 +1225,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1610,
-        "y": 2020,
+        "x": 1700,
+        "y": 1980,
         "wires": []
     },
     {
-        "id": "565d4d04c23a6618",
+        "id": "202a11bc831e02c8",
         "type": "ui_dropdown",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "label": "Time Scheduler",
         "tooltip": "",
@@ -1252,14 +1273,14 @@
         "y": 1780,
         "wires": [
             [
-                "55123008d51d734e"
+                "250b0ff7f6cd43e3"
             ]
         ]
     },
     {
-        "id": "55123008d51d734e",
+        "id": "250b0ff7f6cd43e3",
         "type": "change",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "rules": [
             {
@@ -1282,9 +1303,9 @@
         ]
     },
     {
-        "id": "ce87c9d14183b312",
+        "id": "7fd44b65019cbb06",
         "type": "ui_switch",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "label": "Choose On/Off",
         "tooltip": "",
@@ -1311,14 +1332,14 @@
         "y": 1840,
         "wires": [
             [
-                "a75cfe73ee4c6d55"
+                "fec0b796e96d1815"
             ]
         ]
     },
     {
-        "id": "9a699281ada40b05",
+        "id": "149932c3475f24fd",
         "type": "delay",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "pauseType": "delayv",
         "timeout": "1",
@@ -1336,14 +1357,14 @@
         "y": 1880,
         "wires": [
             [
-                "59c504f14bb436b1"
+                "31e152f65223a58b"
             ]
         ]
     },
     {
-        "id": "a75cfe73ee4c6d55",
+        "id": "fec0b796e96d1815",
         "type": "change",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "rules": [
             {
@@ -1366,9 +1387,9 @@
         ]
     },
     {
-        "id": "14499dd311e7fdad",
+        "id": "84f633c9d26acaef",
         "type": "ui_button",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "",
         "group": "7dee2cf71d18accd",
         "order": 4,
@@ -1389,14 +1410,14 @@
         "y": 1940,
         "wires": [
             [
-                "0c64674775aac1e0"
+                "e61090895fcb9ca0"
             ]
         ]
     },
     {
-        "id": "0c64674775aac1e0",
+        "id": "e61090895fcb9ca0",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "delay",
         "func": "msg.payload = flow.get(\"option\");\nmsg.delay = flow.get(\"time\")*1000*60;\nreturn msg;",
         "outputs": 1,
@@ -1409,14 +1430,14 @@
         "y": 1940,
         "wires": [
             [
-                "9a699281ada40b05"
+                "149932c3475f24fd"
             ]
         ]
     },
     {
-        "id": "011c68f52e77e425",
+        "id": "522f90353332b2af",
         "type": "ui_toast",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "position": "top right",
         "displayTime": "3",
         "highlight": "Green",
@@ -1428,14 +1449,14 @@
         "className": "",
         "topic": "Time Scheduler Done",
         "name": "",
-        "x": 1550,
-        "y": 2120,
+        "x": 1710,
+        "y": 2080,
         "wires": []
     },
     {
-        "id": "b1ae5871e52d450c",
+        "id": "cf98e18c6e31a67a",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "Update status on",
         "func": "msg.topic = `select changeStatus('${flow.get(\"device\").title}', '${flow.get(\"chose\").Id}', '1')`\nreturn msg;",
         "outputs": 1,
@@ -1444,18 +1465,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1430,
-        "y": 1020,
+        "x": 1435,
+        "y": 1019.9999961853027,
         "wires": [
             [
-                "98389ba2f6f0faff"
+                "63075b961fbc6cea"
             ]
         ]
     },
     {
-        "id": "83a41fde59276761",
+        "id": "8cb43d33e389f699",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "Update status off",
         "func": "msg.topic = `select changeStatus('${flow.get(\"device\").title}', '${flow.get(\"chose\").Id}', '0')`\nreturn msg;",
         "outputs": 1,
@@ -1464,18 +1485,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1430,
-        "y": 1220,
+        "x": 1435,
+        "y": 1219.9999961853027,
         "wires": [
             [
-                "98389ba2f6f0faff"
+                "63075b961fbc6cea"
             ]
         ]
     },
     {
-        "id": "eb2ed69913f11140",
+        "id": "0f117ca694b90508",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "Update status on",
         "func": "var topic = \"\";\nvar id = flow.get(\"chose\").Id\nvar data = flow.get(\"selected\");\ndata.forEach(function(element) {\n    if(element.isChecked){\n        topic += `select changeStatus('${element.title}','${id}','1');\\n`\n    }\n});\nmsg.topic = topic\nreturn msg;",
         "outputs": 1,
@@ -1488,26 +1509,26 @@
         "y": 1700,
         "wires": [
             [
-                "f2ab484c8805d53b"
+                "149a2fbd7882c166"
             ]
         ]
     },
     {
-        "id": "98389ba2f6f0faff",
+        "id": "63075b961fbc6cea",
         "type": "mysql",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "mydb": "e7f976d3ee444ce1",
         "name": "DB",
-        "x": 1850,
-        "y": 1120,
+        "x": 1855,
+        "y": 1119.9999961853027,
         "wires": [
             []
         ]
     },
     {
-        "id": "8b922cac78f17524",
+        "id": "1b636c9987f2824d",
         "type": "function",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "Update status off",
         "func": "var topic = \"\";\nvar id = flow.get(\"chose\").Id\nvar data = flow.get(\"selected\");\ndata.forEach(function(element) {\n    if(element.isChecked){\n        topic += `select changeStatus('${element.title}','${id}','0');\\n`\n    }\n});\nmsg.topic = topic\nreturn msg;",
         "outputs": 1,
@@ -1520,28 +1541,28 @@
         "y": 1580,
         "wires": [
             [
-                "f2ab484c8805d53b"
+                "149a2fbd7882c166"
             ]
         ]
     },
     {
-        "id": "f2ab484c8805d53b",
+        "id": "149a2fbd7882c166",
         "type": "mysql",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "mydb": "e7f976d3ee444ce1",
         "name": "",
         "x": 1710,
         "y": 1620,
         "wires": [
             [
-                "55cc2f6c39fc1e5c"
+                "c3f1ba8f60b7d07b"
             ]
         ]
     },
     {
-        "id": "55cc2f6c39fc1e5c",
+        "id": "c3f1ba8f60b7d07b",
         "type": "debug",
-        "z": "84070b956f808308",
+        "z": "c4d0c67915ccb15e",
         "name": "debug 11",
         "active": true,
         "tosidebar": true,
@@ -1555,9 +1576,381 @@
         "wires": []
     },
     {
-        "id": "bb3d5b94397f4653",
+        "id": "2cf74505d132ed69",
+        "type": "function",
+        "z": "c4d0c67915ccb15e",
+        "name": "Script",
+        "func": "msg.topic = `select * from Script`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 2060,
+        "wires": [
+            [
+                "4f3f14df8095d986"
+            ]
+        ]
+    },
+    {
+        "id": "4f3f14df8095d986",
+        "type": "mysql",
+        "z": "c4d0c67915ccb15e",
+        "mydb": "e7f976d3ee444ce1",
+        "name": "DB",
+        "x": 430,
+        "y": 2060,
+        "wires": [
+            [
+                "17bdd403ee9daa28"
+            ]
+        ]
+    },
+    {
+        "id": "80a58c30a6ce2253",
+        "type": "mqtt out",
+        "z": "c4d0c67915ccb15e",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a78910a7de187960",
+        "x": 1930,
+        "y": 2500,
+        "wires": []
+    },
+    {
+        "id": "01e2b5d58c98eb3d",
+        "type": "switch",
+        "z": "c4d0c67915ccb15e",
+        "name": "",
+        "property": "$boolean(msg.payload.isChecked)",
+        "propertyType": "jsonata",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1150,
+        "y": 2240,
+        "wires": [
+            [
+                "2777f53c56d5370b"
+            ],
+            [
+                "19727752e2104fa4"
+            ]
+        ]
+    },
+    {
+        "id": "201acfba12fd65ba",
+        "type": "change",
+        "z": "c4d0c67915ccb15e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1080,
+        "y": 2060,
+        "wires": [
+            [
+                "01e2b5d58c98eb3d"
+            ]
+        ]
+    },
+    {
+        "id": "1d5ee37f8cd68d76",
+        "type": "mysql",
+        "z": "c4d0c67915ccb15e",
+        "mydb": "e7f976d3ee444ce1",
+        "name": "DB",
+        "x": 1790,
+        "y": 2200,
+        "wires": [
+            [
+                "c7bd53ba7d7569a6"
+            ]
+        ]
+    },
+    {
+        "id": "bbe6ddeb9861ad5c",
+        "type": "function",
+        "z": "c4d0c67915ccb15e",
+        "name": "turnOn",
+        "func": "msg.topic = `${global.get(\"userName\")}\\\\SCRIPT`\nvar list = [];\nvar data = flow.get(\"select\");\ndata.forEach(function (element) {\n        list.push(\n            {\n                device: element.socketName,\n                data: element.status,\n                eqId: element.equipmentID\n            }\n        )\n    }\n);\nmsg.payload = {\n    action: \"SCRIPT\",\n    list: list\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1750,
+        "y": 2500,
+        "wires": [
+            [
+                "80a58c30a6ce2253",
+                "47f8f425de94b417"
+            ]
+        ]
+    },
+    {
+        "id": "2777f53c56d5370b",
+        "type": "function",
+        "z": "c4d0c67915ccb15e",
+        "name": "Update status on",
+        "func": "msg.topic = `UPDATE Script SET status = 1 WHERE scriptName = '${flow.get(\"device\").title}';`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1370,
+        "y": 2120,
+        "wires": [
+            [
+                "1d5ee37f8cd68d76"
+            ]
+        ]
+    },
+    {
+        "id": "19727752e2104fa4",
+        "type": "function",
+        "z": "c4d0c67915ccb15e",
+        "name": "Update status off",
+        "func": "msg.topic = `UPDATE Script SET status = 0 WHERE scriptName = '${flow.get(\"device\").title}';`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1370,
+        "y": 2320,
+        "wires": [
+            [
+                "1d5ee37f8cd68d76"
+            ]
+        ]
+    },
+    {
+        "id": "4c8d112c28d04f3d",
+        "type": "ui_table",
+        "z": "c4d0c67915ccb15e",
+        "group": "fe991fbbebceaa63",
+        "name": "Socket",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 1,
+        "cts": true,
+        "x": 1910,
+        "y": 2400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "714b9b3569cf6444",
+        "type": "ui_list",
+        "z": "c4d0c67915ccb15e",
+        "group": "fe991fbbebceaa63",
+        "name": "Script",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "lineType": "two",
+        "actionType": "switch",
+        "allowHTML": false,
+        "outputs": 1,
+        "topic": "",
+        "x": 910,
+        "y": 2060,
+        "wires": [
+            [
+                "201acfba12fd65ba"
+            ]
+        ]
+    },
+    {
+        "id": "dd6ff9798fa3afa2",
+        "type": "function",
+        "z": "c4d0c67915ccb15e",
+        "name": "List",
+        "func": "var data = flow.get(\"data\");\nvar payload = []\ndata.forEach(function(element) {\n    payload.push({\n        title: element.scriptName,\n        description: element.status == 1 ? \"On\" : \"Off\",\n        isChecked : element.status == 1 ? true : false,  \n    })\n});\nmsg.payload = payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 2060,
+        "wires": [
+            [
+                "714b9b3569cf6444"
+            ]
+        ]
+    },
+    {
+        "id": "14f6f122ef52bf95",
+        "type": "change",
+        "z": "c4d0c67915ccb15e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "select",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1540,
+        "y": 2400,
+        "wires": [
+            [
+                "cba74f6a3e3db7a7",
+                "bbe6ddeb9861ad5c"
+            ]
+        ]
+    },
+    {
+        "id": "17bdd403ee9daa28",
+        "type": "change",
+        "z": "c4d0c67915ccb15e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "data",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 2060,
+        "wires": [
+            [
+                "dd6ff9798fa3afa2"
+            ]
+        ]
+    },
+    {
+        "id": "c7bd53ba7d7569a6",
+        "type": "function",
+        "z": "c4d0c67915ccb15e",
+        "name": "get_Socket_infor",
+        "func": "var id = flow.get(\"device\").title;\nmsg.topic = `select * from Socket where scriptName = '${id}'`;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1790,
+        "y": 2300,
+        "wires": [
+            [
+                "4a2390a893eb9fce"
+            ]
+        ]
+    },
+    {
+        "id": "4a2390a893eb9fce",
+        "type": "mysql",
+        "z": "c4d0c67915ccb15e",
+        "mydb": "e7f976d3ee444ce1",
+        "name": "DB",
+        "x": 1350,
+        "y": 2400,
+        "wires": [
+            [
+                "14f6f122ef52bf95"
+            ]
+        ]
+    },
+    {
+        "id": "cba74f6a3e3db7a7",
+        "type": "function",
+        "z": "c4d0c67915ccb15e",
+        "name": "Table",
+        "func": "var data = flow.get(\"select\");\nvar payload = []\ndata.forEach(function(element) {\n    payload.push({\n    Name: element.socketName,\n    Status: element.status\n    })\n});\nmsg.payload = payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1750,
+        "y": 2400,
+        "wires": [
+            [
+                "4c8d112c28d04f3d"
+            ]
+        ]
+    },
+    {
+        "id": "47f8f425de94b417",
+        "type": "debug",
+        "z": "c4d0c67915ccb15e",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1930,
+        "y": 2600,
+        "wires": []
+    },
+    {
+        "id": "11b53f59c265027f",
         "type": "ui_chart",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "name": "",
         "group": "a1234567.5e1b9",
         "order": 2,
@@ -1592,16 +1985,16 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 1000,
+        "x": 940,
         "y": 760,
         "wires": [
             []
         ]
     },
     {
-        "id": "9502bdcfb9a9d5a3",
+        "id": "d4c001c80121369f",
         "type": "ui_gauge",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "name": "",
         "group": "a1234567.5e1b9",
         "order": 6,
@@ -1627,9 +2020,9 @@
         "wires": []
     },
     {
-        "id": "10bdd1538534f120",
+        "id": "ae9b7f779e140668",
         "type": "mqtt in",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "name": "",
         "topic": "",
         "qos": "2",
@@ -1643,15 +2036,14 @@
         "y": 560,
         "wires": [
             [
-                "9502bdcfb9a9d5a3",
-                "5443dc17cb7d6c78"
+                "d4c001c80121369f"
             ]
         ]
     },
     {
-        "id": "ff277a83f9604427",
+        "id": "0b3e4d53d888f643",
         "type": "inject",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "name": "",
         "props": [
             {
@@ -1673,28 +2065,28 @@
         "y": 400,
         "wires": [
             [
-                "f6e6b7726d8c68f2"
+                "41d4be4a99cb4b37"
             ]
         ]
     },
     {
-        "id": "654f2435cc510636",
+        "id": "effbbb3011e09268",
         "type": "mysql",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "mydb": "e7f976d3ee444ce1",
         "name": "DB",
         "x": 610,
         "y": 400,
         "wires": [
             [
-                "2ba8c39e8391998f"
+                "86a37d194649480f"
             ]
         ]
     },
     {
-        "id": "f3e93dcf7d5b1cf1",
+        "id": "cc6c7040a449bbb6",
         "type": "ui_table",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "group": "a1234567.5e1b9",
         "name": "Equipment",
         "order": 1,
@@ -1707,14 +2099,14 @@
         "y": 400,
         "wires": [
             [
-                "19903826222dabea"
+                "fbbab321075a5738"
             ]
         ]
     },
     {
-        "id": "2ba8c39e8391998f",
+        "id": "86a37d194649480f",
         "type": "change",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "name": "",
         "rules": [
             {
@@ -1734,14 +2126,14 @@
         "y": 400,
         "wires": [
             [
-                "e14e6efd17b0c0bd"
+                "0d024f79a1889f06"
             ]
         ]
     },
     {
-        "id": "e14e6efd17b0c0bd",
+        "id": "0d024f79a1889f06",
         "type": "function",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "name": "Table",
         "func": "var data = flow.get(\"eq\");\nvar payload = []\ndata.forEach(function(element) {\n    payload.push({\n    Id: element.equipmentID,\n    Name: element.equipmentName,\n    Socket: element.numberSocket,\n    Location: element.position\n    })\n});\nmsg.payload = payload\nreturn msg;",
         "outputs": 1,
@@ -1754,14 +2146,14 @@
         "y": 400,
         "wires": [
             [
-                "f3e93dcf7d5b1cf1"
+                "cc6c7040a449bbb6"
             ]
         ]
     },
     {
-        "id": "f6e6b7726d8c68f2",
+        "id": "41d4be4a99cb4b37",
         "type": "function",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "name": "Equipment",
         "func": "msg.topic = `select * from Equipment_Plug where manager = '${global.get(\"userName\")}'`\nreturn msg;",
         "outputs": 1,
@@ -1774,14 +2166,14 @@
         "y": 400,
         "wires": [
             [
-                "654f2435cc510636"
+                "effbbb3011e09268"
             ]
         ]
     },
     {
-        "id": "19903826222dabea",
+        "id": "fbbab321075a5738",
         "type": "change",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "name": "",
         "rules": [
             {
@@ -1801,15 +2193,15 @@
         "y": 560,
         "wires": [
             [
-                "788c0ebc53bb19f2",
-                "b0d303a843754cda"
+                "594adfc4e5a368f6",
+                "aeef80e3f1ac7696"
             ]
         ]
     },
     {
-        "id": "788c0ebc53bb19f2",
+        "id": "594adfc4e5a368f6",
         "type": "function",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "name": "set topic temperature",
         "func": "msg.action = \"subscribe\";\nmsg.topic = `${flow.get(\"chose\").Id}\\\\TEMPERATURE`;\nreturn msg;",
         "outputs": 1,
@@ -1822,48 +2214,14 @@
         "y": 560,
         "wires": [
             [
-                "10bdd1538534f120",
-                "85501706f79f7a5e"
+                "ae9b7f779e140668"
             ]
         ]
     },
     {
-        "id": "5443dc17cb7d6c78",
-        "type": "debug",
-        "z": "9a76a4e8bdd99e48",
-        "name": "debug 12",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 880,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "85501706f79f7a5e",
-        "type": "debug",
-        "z": "9a76a4e8bdd99e48",
-        "name": "debug 13",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "b0d303a843754cda",
+        "id": "aeef80e3f1ac7696",
         "type": "function",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "name": "set topic current",
         "func": "msg.action = \"subscribe\";\nmsg.topic = `${flow.get(\"chose\").Id}\\\\CURRENT`;\nreturn msg;",
         "outputs": 1,
@@ -1876,14 +2234,14 @@
         "y": 760,
         "wires": [
             [
-                "d635a5d6624c31af"
+                "8669d190c9e75df4"
             ]
         ]
     },
     {
-        "id": "d635a5d6624c31af",
+        "id": "8669d190c9e75df4",
         "type": "mqtt in",
-        "z": "9a76a4e8bdd99e48",
+        "z": "07c88e5ee81fcd05",
         "name": "",
         "topic": "",
         "qos": "2",
@@ -1897,14 +2255,14 @@
         "y": 760,
         "wires": [
             [
-                "bb3d5b94397f4653"
+                "11b53f59c265027f"
             ]
         ]
     },
     {
-        "id": "152b57b93893f581",
+        "id": "bacf59b0330cbc8c",
         "type": "ui_ui_control",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "",
         "events": "all",
         "x": 1220,
@@ -1914,9 +2272,9 @@
         ]
     },
     {
-        "id": "030baa63e035f70f",
+        "id": "929e587d22d7f462",
         "type": "ui_button",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "",
         "group": "506de255854d948c",
         "order": 3,
@@ -1937,14 +2295,14 @@
         "y": 300,
         "wires": [
             [
-                "2a709be85ec57e04"
+                "5686e045a6bdbdb4"
             ]
         ]
     },
     {
-        "id": "a0e283fd70b3e27b",
+        "id": "b0b8fd3c5724b409",
         "type": "change",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "",
         "rules": [
             {
@@ -1964,14 +2322,14 @@
         "y": 300,
         "wires": [
             [
-                "152b57b93893f581"
+                "bacf59b0330cbc8c"
             ]
         ]
     },
     {
-        "id": "a5edfb7ae190806f",
+        "id": "f05398772b62aa06",
         "type": "ui_text_input",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "",
         "label": "User Name",
         "tooltip": "",
@@ -1990,14 +2348,14 @@
         "y": 140,
         "wires": [
             [
-                "648a07a887f8eeaa"
+                "9c751e69e4ccf098"
             ]
         ]
     },
     {
-        "id": "2c74de7cd0b5fed8",
+        "id": "26f78a0b50224246",
         "type": "ui_text_input",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "",
         "label": "Password",
         "tooltip": "",
@@ -2016,14 +2374,14 @@
         "y": 200,
         "wires": [
             [
-                "f6a06520f31397e6"
+                "fbb12d41cce2c181"
             ]
         ]
     },
     {
-        "id": "4f9d886706c21dc2",
+        "id": "c6d30cde1ab6da3c",
         "type": "ui_button",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "",
         "group": "506de255854d948c",
         "order": 4,
@@ -2044,14 +2402,14 @@
         "y": 400,
         "wires": [
             [
-                "3058a20d885a59d9"
+                "8343b1dc7815cfb3"
             ]
         ]
     },
     {
-        "id": "3058a20d885a59d9",
+        "id": "8343b1dc7815cfb3",
         "type": "change",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "",
         "rules": [
             {
@@ -2071,14 +2429,14 @@
         "y": 400,
         "wires": [
             [
-                "152b57b93893f581"
+                "bacf59b0330cbc8c"
             ]
         ]
     },
     {
-        "id": "648a07a887f8eeaa",
+        "id": "9c751e69e4ccf098",
         "type": "change",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "",
         "rules": [
             {
@@ -2101,9 +2459,9 @@
         ]
     },
     {
-        "id": "f6a06520f31397e6",
+        "id": "fbb12d41cce2c181",
         "type": "change",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "",
         "rules": [
             {
@@ -2126,23 +2484,23 @@
         ]
     },
     {
-        "id": "9ea4574b3c2177ac",
+        "id": "204e92773f6947a6",
         "type": "mysql",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "mydb": "e7f976d3ee444ce1",
         "name": "DB",
         "x": 550,
         "y": 300,
         "wires": [
             [
-                "e2d7f01e7dbb3172"
+                "1ed8e88b606bea4d"
             ]
         ]
     },
     {
-        "id": "2a709be85ec57e04",
+        "id": "5686e045a6bdbdb4",
         "type": "function",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "login",
         "func": "msg.topic = `select login('${global.get(\"userName\")}', '${flow.get(\"password\")}') as res`\nreturn msg;",
         "outputs": 1,
@@ -2155,14 +2513,14 @@
         "y": 300,
         "wires": [
             [
-                "9ea4574b3c2177ac"
+                "204e92773f6947a6"
             ]
         ]
     },
     {
-        "id": "e2d7f01e7dbb3172",
+        "id": "1ed8e88b606bea4d",
         "type": "switch",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "",
         "property": "$abs(msg.payload.res)",
         "propertyType": "jsonata",
@@ -2185,20 +2543,20 @@
         "y": 300,
         "wires": [
             [
-                "a0e283fd70b3e27b",
-                "bbbfb929e17c40b0",
-                "94fe86b1c64a8ca9",
-                "a9d0dd0774c1a0f1"
+                "b0b8fd3c5724b409",
+                "b702066ca4cc149a",
+                "236d9a64b4ea64ef",
+                "b79f4cfb86a86e4b"
             ],
             [
-                "0e89dd608760b689"
+                "9d9653e1f9a99b77"
             ]
         ]
     },
     {
-        "id": "bbbfb929e17c40b0",
+        "id": "b702066ca4cc149a",
         "type": "ui_toast",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "position": "top right",
         "displayTime": "3",
         "highlight": "Green",
@@ -2215,9 +2573,9 @@
         "wires": []
     },
     {
-        "id": "0e89dd608760b689",
+        "id": "9d9653e1f9a99b77",
         "type": "ui_toast",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "position": "top right",
         "displayTime": "3",
         "highlight": "red",
@@ -2234,9 +2592,9 @@
         "wires": []
     },
     {
-        "id": "94fe86b1c64a8ca9",
+        "id": "236d9a64b4ea64ef",
         "type": "change",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "",
         "rules": [
             {
@@ -2256,14 +2614,14 @@
         "y": 360,
         "wires": [
             [
-                "152b57b93893f581"
+                "bacf59b0330cbc8c"
             ]
         ]
     },
     {
-        "id": "a9d0dd0774c1a0f1",
+        "id": "b79f4cfb86a86e4b",
         "type": "change",
-        "z": "cb40a44d23cb5760",
+        "z": "c1cbdaa6a3f38f38",
         "name": "",
         "rules": [
             {
@@ -2283,14 +2641,14 @@
         "y": 440,
         "wires": [
             [
-                "152b57b93893f581"
+                "bacf59b0330cbc8c"
             ]
         ]
     },
     {
-        "id": "62e6c8e41318ed99",
+        "id": "6e557ca81fbf37f3",
         "type": "ui_ui_control",
-        "z": "117670200288981a",
+        "z": "403d1237864cacc4",
         "name": "",
         "events": "all",
         "x": 920,
@@ -2300,9 +2658,9 @@
         ]
     },
     {
-        "id": "51072983b7ba2ee0",
+        "id": "94999f570fa865bb",
         "type": "ui_button",
-        "z": "117670200288981a",
+        "z": "403d1237864cacc4",
         "name": "",
         "group": "f0d047bca5f32611",
         "order": 3,
@@ -2323,14 +2681,14 @@
         "y": 260,
         "wires": [
             [
-                "4beab38a2329d095"
+                "88da970b171034d3"
             ]
         ]
     },
     {
-        "id": "df3b8a118cdab206",
+        "id": "93bc1701a43b7685",
         "type": "ui_text_input",
-        "z": "117670200288981a",
+        "z": "403d1237864cacc4",
         "name": "",
         "label": "User Name",
         "tooltip": "",
@@ -2349,14 +2707,14 @@
         "y": 100,
         "wires": [
             [
-                "24ef9f81896506cd"
+                "2ee09d6b94b57c2f"
             ]
         ]
     },
     {
-        "id": "71ade9357a5df070",
+        "id": "b37b2e2ba4a8b72c",
         "type": "ui_text_input",
-        "z": "117670200288981a",
+        "z": "403d1237864cacc4",
         "name": "",
         "label": "Password",
         "tooltip": "",
@@ -2375,14 +2733,14 @@
         "y": 160,
         "wires": [
             [
-                "3e404ac595cdba81"
+                "73115345612eefb7"
             ]
         ]
     },
     {
-        "id": "4be78e76d2696a4d",
+        "id": "2f98444f382d8d6c",
         "type": "ui_button",
-        "z": "117670200288981a",
+        "z": "403d1237864cacc4",
         "name": "",
         "group": "f0d047bca5f32611",
         "order": 4,
@@ -2403,14 +2761,14 @@
         "y": 320,
         "wires": [
             [
-                "63efd1d1b8ce68a4"
+                "5b4b0693ba52e039"
             ]
         ]
     },
     {
-        "id": "63efd1d1b8ce68a4",
+        "id": "5b4b0693ba52e039",
         "type": "change",
-        "z": "117670200288981a",
+        "z": "403d1237864cacc4",
         "name": "",
         "rules": [
             {
@@ -2430,28 +2788,28 @@
         "y": 320,
         "wires": [
             [
-                "62e6c8e41318ed99"
+                "6e557ca81fbf37f3"
             ]
         ]
     },
     {
-        "id": "d8330af53d1f39fa",
+        "id": "d13bc6e87bb5b826",
         "type": "mysql",
-        "z": "117670200288981a",
+        "z": "403d1237864cacc4",
         "mydb": "e7f976d3ee444ce1",
         "name": "DB",
         "x": 770,
         "y": 100,
         "wires": [
             [
-                "42a15b12e2c164c3"
+                "5386a74034853433"
             ]
         ]
     },
     {
-        "id": "4beab38a2329d095",
+        "id": "88da970b171034d3",
         "type": "function",
-        "z": "117670200288981a",
+        "z": "403d1237864cacc4",
         "name": "function 1",
         "func": "var query = `SELECT createUser('${flow.get(\"userName\")}', '${flow.get(\"password\")}') AS result`;\nmsg.topic = query;\nreturn msg;",
         "outputs": 1,
@@ -2464,14 +2822,14 @@
         "y": 260,
         "wires": [
             [
-                "d8330af53d1f39fa"
+                "d13bc6e87bb5b826"
             ]
         ]
     },
     {
-        "id": "24ef9f81896506cd",
+        "id": "2ee09d6b94b57c2f",
         "type": "change",
-        "z": "117670200288981a",
+        "z": "403d1237864cacc4",
         "name": "",
         "rules": [
             {
@@ -2494,9 +2852,9 @@
         ]
     },
     {
-        "id": "3e404ac595cdba81",
+        "id": "73115345612eefb7",
         "type": "change",
-        "z": "117670200288981a",
+        "z": "403d1237864cacc4",
         "name": "",
         "rules": [
             {
@@ -2519,9 +2877,9 @@
         ]
     },
     {
-        "id": "42a15b12e2c164c3",
+        "id": "5386a74034853433",
         "type": "debug",
-        "z": "117670200288981a",
+        "z": "403d1237864cacc4",
         "name": "debug 1",
         "active": true,
         "tosidebar": true,
@@ -2536,9 +2894,9 @@
         "wires": []
     },
     {
-        "id": "0bfb851603c5f055",
+        "id": "6cbdeceba483d41c",
         "type": "function",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "get_Temperature",
         "func": "var query = `SELECT *from DS_Temperature`\nmsg.topic = query\nreturn msg;",
         "outputs": 1,
@@ -2551,14 +2909,14 @@
         "y": 100,
         "wires": [
             [
-                "282dd9491c678f1e"
+                "2bc9f264a4c25191"
             ]
         ]
     },
     {
-        "id": "920a0611142d9cf7",
+        "id": "74adbe2b7804e65d",
         "type": "http response",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "",
         "statusCode": "",
         "headers": {},
@@ -2567,9 +2925,9 @@
         "wires": []
     },
     {
-        "id": "6eee55c1b1245a71",
+        "id": "6baf9905844286b4",
         "type": "http in",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "",
         "url": "/api/temperature",
         "method": "get",
@@ -2579,14 +2937,14 @@
         "y": 100,
         "wires": [
             [
-                "0bfb851603c5f055"
+                "6cbdeceba483d41c"
             ]
         ]
     },
     {
-        "id": "9609940c47268d36",
+        "id": "da28bf1dd16faf34",
         "type": "http in",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "",
         "url": "/api/current",
         "method": "get",
@@ -2596,14 +2954,14 @@
         "y": 140,
         "wires": [
             [
-                "abe01fa33c5f7fa3"
+                "a01f94844b044513"
             ]
         ]
     },
     {
-        "id": "abe01fa33c5f7fa3",
+        "id": "a01f94844b044513",
         "type": "function",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "get_Current",
         "func": "var query = `SELECT *from ACS_Current`\nmsg.topic = query\nreturn msg;",
         "outputs": 1,
@@ -2616,14 +2974,14 @@
         "y": 140,
         "wires": [
             [
-                "282dd9491c678f1e"
+                "2bc9f264a4c25191"
             ]
         ]
     },
     {
-        "id": "e176816853e5e5f2",
+        "id": "2cf3bc4bc147abde",
         "type": "http in",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "",
         "url": "/api/user",
         "method": "post",
@@ -2633,14 +2991,14 @@
         "y": 260,
         "wires": [
             [
-                "82a1c6a17cc3268c"
+                "9c2b3c3a396f52e2"
             ]
         ]
     },
     {
-        "id": "82a1c6a17cc3268c",
+        "id": "9c2b3c3a396f52e2",
         "type": "function",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "post_Users",
         "func": "var userName = msg.payload.userName; \nvar passwordHash = msg.payload.passwordHash;\nvar query = `SELECT createUser('${userName}', '${passwordHash}') AS result`;\nmsg.topic = query;\nreturn msg;\n",
         "outputs": 1,
@@ -2653,14 +3011,14 @@
         "y": 260,
         "wires": [
             [
-                "282dd9491c678f1e"
+                "2bc9f264a4c25191"
             ]
         ]
     },
     {
-        "id": "bfa9c658f3b999d3",
+        "id": "4b7ff58e57cfe05a",
         "type": "http in",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "",
         "url": "/api/equipment",
         "method": "post",
@@ -2670,14 +3028,14 @@
         "y": 300,
         "wires": [
             [
-                "67df5cebe39a8352"
+                "d06b5dcb7d7b6848"
             ]
         ]
     },
     {
-        "id": "67df5cebe39a8352",
+        "id": "d06b5dcb7d7b6848",
         "type": "function",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "post_Equipment",
         "func": "var equipmentName = msg.payload.equipmentName; \nvar numberSocket = msg.payload.numberSocket;\nvar query = `SELECT createEquipment('${equipmentName}', '${numberSocket}') AS result`;\nmsg.topic = query;\nreturn msg;\n\n",
         "outputs": 1,
@@ -2690,14 +3048,14 @@
         "y": 300,
         "wires": [
             [
-                "282dd9491c678f1e"
+                "2bc9f264a4c25191"
             ]
         ]
     },
     {
-        "id": "a9169d9798ef95cb",
+        "id": "8b5a653706cc079a",
         "type": "function",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "get_Users",
         "func": "var query = `SELECT *from Users`\nmsg.topic = query\nreturn msg;",
         "outputs": 1,
@@ -2710,14 +3068,14 @@
         "y": 180,
         "wires": [
             [
-                "282dd9491c678f1e"
+                "2bc9f264a4c25191"
             ]
         ]
     },
     {
-        "id": "720ee2b38bf9d92c",
+        "id": "e32d7aed442147b8",
         "type": "http in",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "",
         "url": "/api/user",
         "method": "get",
@@ -2727,14 +3085,14 @@
         "y": 180,
         "wires": [
             [
-                "a9169d9798ef95cb"
+                "8b5a653706cc079a"
             ]
         ]
     },
     {
-        "id": "4fd35bf9f83bd8d6",
+        "id": "d5293ad6e9f5bd8e",
         "type": "http in",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "",
         "url": "/api/equipment",
         "method": "get",
@@ -2744,14 +3102,14 @@
         "y": 220,
         "wires": [
             [
-                "d71a0522170c9391"
+                "2ed03ade5d915ce4"
             ]
         ]
     },
     {
-        "id": "d71a0522170c9391",
+        "id": "2ed03ade5d915ce4",
         "type": "function",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "name": "get_Room",
         "func": "var query = `SELECT *from Equipment_Plug`\nmsg.topic = query\nreturn msg;",
         "outputs": 1,
@@ -2764,28 +3122,28 @@
         "y": 220,
         "wires": [
             [
-                "282dd9491c678f1e"
+                "2bc9f264a4c25191"
             ]
         ]
     },
     {
-        "id": "282dd9491c678f1e",
+        "id": "2bc9f264a4c25191",
         "type": "mysql",
-        "z": "ed6816ba7f57d2eb",
+        "z": "08c71598acb2a15f",
         "mydb": "e7f976d3ee444ce1",
         "name": "TEST",
         "x": 590,
         "y": 200,
         "wires": [
             [
-                "920a0611142d9cf7"
+                "74adbe2b7804e65d"
             ]
         ]
     },
     {
-        "id": "b6e4508264098a08",
+        "id": "cec670adb708db8f",
         "type": "ui_button",
-        "z": "5b7c3022fb252408",
+        "z": "b10b07ba34052eb5",
         "name": "",
         "group": "41226fd164ba85b2",
         "order": 4,
@@ -2806,17 +3164,17 @@
         "y": 240,
         "wires": [
             [
-                "ecac4c174bc61c82",
-                "eaa97a455a08aa68",
-                "063f27fe2a94dc02",
-                "04471693fce9e1d6"
+                "024ca79ae49dc492",
+                "be70b4606bed9de1",
+                "a14fc4afcad12271",
+                "579a1c14cfbed189"
             ]
         ]
     },
     {
-        "id": "ecac4c174bc61c82",
+        "id": "024ca79ae49dc492",
         "type": "change",
-        "z": "5b7c3022fb252408",
+        "z": "b10b07ba34052eb5",
         "name": "",
         "rules": [
             {
@@ -2836,14 +3194,14 @@
         "y": 240,
         "wires": [
             [
-                "f784af9c6ec11c36"
+                "43c9a30e166c4c6a"
             ]
         ]
     },
     {
-        "id": "eaa97a455a08aa68",
+        "id": "be70b4606bed9de1",
         "type": "change",
-        "z": "5b7c3022fb252408",
+        "z": "b10b07ba34052eb5",
         "name": "",
         "rules": [
             {
@@ -2863,14 +3221,14 @@
         "y": 300,
         "wires": [
             [
-                "f784af9c6ec11c36"
+                "43c9a30e166c4c6a"
             ]
         ]
     },
     {
-        "id": "063f27fe2a94dc02",
+        "id": "a14fc4afcad12271",
         "type": "change",
-        "z": "5b7c3022fb252408",
+        "z": "b10b07ba34052eb5",
         "name": "",
         "rules": [
             {
@@ -2890,14 +3248,14 @@
         "y": 360,
         "wires": [
             [
-                "f784af9c6ec11c36"
+                "43c9a30e166c4c6a"
             ]
         ]
     },
     {
-        "id": "f784af9c6ec11c36",
+        "id": "43c9a30e166c4c6a",
         "type": "ui_ui_control",
-        "z": "5b7c3022fb252408",
+        "z": "b10b07ba34052eb5",
         "name": "",
         "events": "all",
         "x": 800,
@@ -2907,9 +3265,9 @@
         ]
     },
     {
-        "id": "04471693fce9e1d6",
+        "id": "579a1c14cfbed189",
         "type": "change",
-        "z": "5b7c3022fb252408",
+        "z": "b10b07ba34052eb5",
         "name": "",
         "rules": [
             {
@@ -2929,15 +3287,15 @@
         "y": 440,
         "wires": [
             [
-                "f784af9c6ec11c36",
-                "828a37ba8f9d3ab2"
+                "43c9a30e166c4c6a",
+                "94c434a4ad9535c9"
             ]
         ]
     },
     {
-        "id": "828a37ba8f9d3ab2",
+        "id": "94c434a4ad9535c9",
         "type": "debug",
-        "z": "5b7c3022fb252408",
+        "z": "b10b07ba34052eb5",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -2952,9 +3310,9 @@
         "wires": []
     },
     {
-        "id": "2136d49bc0b3c422",
+        "id": "37cb8d0c798f47e4",
         "type": "mqtt in",
-        "z": "a1011441c04be54b",
+        "z": "3accd8f23e4a4ef8",
         "name": "",
         "topic": "from-client",
         "qos": "0",
@@ -2968,15 +3326,15 @@
         "y": 180,
         "wires": [
             [
-                "3459250597bd18f9",
-                "0bbf8eb04a11eaf5"
+                "871c20c229b43a61",
+                "fd7971cabbc9a4a9"
             ]
         ]
     },
     {
-        "id": "3459250597bd18f9",
+        "id": "871c20c229b43a61",
         "type": "debug",
-        "z": "a1011441c04be54b",
+        "z": "3accd8f23e4a4ef8",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -2991,9 +3349,9 @@
         "wires": []
     },
     {
-        "id": "e6b2a17ef18f5e8c",
+        "id": "0764dd4152370aeb",
         "type": "aedes broker",
-        "z": "a1011441c04be54b",
+        "z": "3accd8f23e4a4ef8",
         "name": "",
         "mqtt_port": 1883,
         "mqtt_ws_bind": "port",
@@ -3014,23 +3372,23 @@
         ]
     },
     {
-        "id": "3b87508924110923",
+        "id": "5548b09d5f50ba3f",
         "type": "mysql",
-        "z": "a1011441c04be54b",
+        "z": "3accd8f23e4a4ef8",
         "mydb": "e7f976d3ee444ce1",
         "name": "DB",
         "x": 870,
         "y": 180,
         "wires": [
             [
-                "9592315dbb7759ad"
+                "f91cecc413d352d2"
             ]
         ]
     },
     {
-        "id": "780121c3330a1363",
+        "id": "191883f425cb509f",
         "type": "function",
-        "z": "a1011441c04be54b",
+        "z": "3accd8f23e4a4ef8",
         "name": "Add New Equipment",
         "func": "msg.topic = `select changeManager('${flow.get(\"data\").userName}', '${flow.get(\"data\").equipmentID}')`\nreturn msg;",
         "outputs": 1,
@@ -3043,14 +3401,14 @@
         "y": 260,
         "wires": [
             [
-                "3b87508924110923"
+                "5548b09d5f50ba3f"
             ]
         ]
     },
     {
-        "id": "0bbf8eb04a11eaf5",
+        "id": "fd7971cabbc9a4a9",
         "type": "change",
-        "z": "a1011441c04be54b",
+        "z": "3accd8f23e4a4ef8",
         "name": "",
         "rules": [
             {
@@ -3070,14 +3428,14 @@
         "y": 200,
         "wires": [
             [
-                "780121c3330a1363"
+                "191883f425cb509f"
             ]
         ]
     },
     {
-        "id": "9592315dbb7759ad",
+        "id": "f91cecc413d352d2",
         "type": "debug",
-        "z": "a1011441c04be54b",
+        "z": "3accd8f23e4a4ef8",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -3087,7 +3445,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1040,
+        "x": 1070,
         "y": 180,
         "wires": []
     }
