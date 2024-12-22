@@ -20,7 +20,7 @@ def execute_mysql_script(host, user, password, database, sql_script_path):
     except subprocess.CalledProcessError as e:
         print(f"Error executing MySQL script: {e}")
         
-mysql_host = "localhost"
+mysql_host = "172.17.0.1"
 mysql_user = "root"
 mysql_password = "123456"
 mysql_database = "ftpdb"
