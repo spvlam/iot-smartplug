@@ -192,7 +192,6 @@ button{
 
 // put function declarations here:
 bool wifiConnected = false;
-
 void handleRoot()
 {
   server.send(200, "text/html", webPage);
@@ -207,13 +206,16 @@ void setup()
   pinMode(r2, OUTPUT);
   digitalWrite(r2, HIGH);
   sensor1.begin();
+  // setup the access point mode
   setupAP();
   setupMQTT();
 }
 
 void loop()
 {
+  // topic subcribe equipment
   String tp = userName + '\\' + equipmentId;
+  // topic subcribe script
   String tpS = userName + "\\SCRIPT";
   String subTemp = String(equipmentId) + "\\TEMPERATURE";
   String subCurrent = String(equipmentId) + "\\CURRENT";
@@ -247,6 +249,7 @@ void loop()
       mqtt_client.subscribe(tpS.c_str());
     }
     mqtt_client.loop();
+    // send temperature from esp to topic subTemp
     mqtt_client.publish(subTemp.c_str(), String(temperature).c_str());
     mqtt_client.publish(subCurrent.c_str(), String(volt).c_str());
   }
@@ -254,6 +257,7 @@ void loop()
 }
 
 // put function definitions here:
+//  if topicStr equal config then subcribe a topic else handle data received
 void callBack(char *topic, byte *payload, unsigned int length)
 {
   Serial.print("Message arrived [");
@@ -270,7 +274,8 @@ void callBack(char *topic, byte *payload, unsigned int length)
     handleRequest(payload);
   }
 }
-
+// allow acesspoint mode for connecting to wifi, go to the wifi login mode if not auth else the 
+// show the login successfully
 void setupAP()
 {
   WiFi.softAPdisconnect();
@@ -288,7 +293,7 @@ void setupAP()
   server.on("/connect", HTTP_GET, handleConnect);
   server.begin();
 }
-
+//
 void handleConnect()
 {
   String ssidParam = server.arg("ssid");
@@ -302,6 +307,7 @@ void handleConnect()
   server.send(200, "text/plain", "Credentials updated! Reconnecting...");
   wifiConnected = connectWifi() == WL_CONNECTED;
 }
+// connect to wifi using ssid has been provided by handleConnect()
 int connectWifi()
 {
   WiFi.softAPdisconnect();
@@ -343,7 +349,7 @@ void setupMQTT()
   mqtt_client.setServer(mqtt_sever, port);
   mqtt_client.setCallback(callBack);
 }
-
+// ensure that MQTTclient stay connected to broker
 void reconnect()
 {
   while (!mqtt_client.connected())
@@ -370,7 +376,7 @@ void reconnect()
     }
   }
 }
-
+// control the remote device
 void remote(RemotePayload payload)
 {
   if (payload.getDeviceName() == socket1)
@@ -386,6 +392,7 @@ void remote(RemotePayload payload)
     digitalWrite(r2, payload.getData());
   }
 }
+// received the message from MQTT and take an action
 void handleRequest(byte *payload)
 {
   String payloadStr = String((char *)payload);
